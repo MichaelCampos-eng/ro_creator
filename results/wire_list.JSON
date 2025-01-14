@@ -1,0 +1,1363 @@
+{
+  "Checksum": null,
+  "NetList": null,
+  "ConnectorList": null,
+  "ComponentDefinition": {
+    "WirelistComponentConnections": [
+      {
+        "ReferenceDesignator1": "J601A",
+        "Pin1": "28",
+        "ReferenceDesignator2": "P606",
+        "Pin2": "4",
+        "WireID": ""
+      },
+      {
+        "ReferenceDesignator1": "J601A",
+        "Pin1": "28",
+        "ReferenceDesignator2": "J699",
+        "Pin2": "18",
+        "WireID": ""
+      },
+      {
+        "ReferenceDesignator1": "J601A",
+        "Pin1": "29",
+        "ReferenceDesignator2": "P606",
+        "Pin2": "12",
+        "WireID": ""
+      },
+      {
+        "ReferenceDesignator1": "J601A",
+        "Pin1": "29",
+        "ReferenceDesignator2": "J699",
+        "Pin2": "19",
+        "WireID": ""
+      },
+      {
+        "ReferenceDesignator1": "J601A",
+        "Pin1": "20",
+        "ReferenceDesignator2": "P602",
+        "Pin2": "J",
+        "WireID": ""
+      },
+      {
+        "ReferenceDesignator1": "J601A",
+        "Pin1": "21",
+        "ReferenceDesignator2": "P602",
+        "Pin2": "K",
+        "WireID": ""
+      },
+      {
+        "ReferenceDesignator1": "J601A",
+        "Pin1": "25",
+        "ReferenceDesignator2": "P607",
+        "Pin2": "12",
+        "WireID": ""
+      },
+      {
+        "ReferenceDesignator1": "J601A",
+        "Pin1": "17",
+        "ReferenceDesignator2": "P607",
+        "Pin2": "15",
+        "WireID": ""
+      },
+      {
+        "ReferenceDesignator1": "J601A",
+        "Pin1": "27",
+        "ReferenceDesignator2": "P607",
+        "Pin2": "28",
+        "WireID": ""
+      },
+      {
+        "ReferenceDesignator1": "J601A",
+        "Pin1": "10",
+        "ReferenceDesignator2": "P607",
+        "Pin2": "24",
+        "WireID": ""
+      },
+      {
+        "ReferenceDesignator1": "J601A",
+        "Pin1": "4",
+        "ReferenceDesignator2": "P607",
+        "Pin2": "23",
+        "WireID": ""
+      },
+      {
+        "ReferenceDesignator1": "J601A",
+        "Pin1": "4",
+        "ReferenceDesignator2": "J699",
+        "Pin2": "40",
+        "WireID": ""
+      },
+      {
+        "ReferenceDesignator1": "J601A",
+        "Pin1": "26",
+        "ReferenceDesignator2": "P607",
+        "Pin2": "18",
+        "WireID": ""
+      },
+      {
+        "ReferenceDesignator1": "J601A",
+        "Pin1": "18",
+        "ReferenceDesignator2": "P607",
+        "Pin2": "22",
+        "WireID": ""
+      },
+      {
+        "ReferenceDesignator1": "J601A",
+        "Pin1": "5",
+        "ReferenceDesignator2": "P607",
+        "Pin2": "26",
+        "WireID": ""
+      },
+      {
+        "ReferenceDesignator1": "J601A",
+        "Pin1": "33",
+        "ReferenceDesignator2": "P608",
+        "Pin2": "23",
+        "WireID": ""
+      },
+      {
+        "ReferenceDesignator1": "J601A",
+        "Pin1": "23",
+        "ReferenceDesignator2": "P608",
+        "Pin2": "5",
+        "WireID": ""
+      },
+      {
+        "ReferenceDesignator1": "J601A",
+        "Pin1": "15",
+        "ReferenceDesignator2": "P608",
+        "Pin2": "17",
+        "WireID": ""
+      },
+      {
+        "ReferenceDesignator1": "J601A",
+        "Pin1": "8",
+        "ReferenceDesignator2": "P608",
+        "Pin2": "16",
+        "WireID": ""
+      },
+      {
+        "ReferenceDesignator1": "J601A",
+        "Pin1": "14",
+        "ReferenceDesignator2": "P608",
+        "Pin2": "21",
+        "WireID": ""
+      },
+      {
+        "ReferenceDesignator1": "J601A",
+        "Pin1": "16",
+        "ReferenceDesignator2": "P608",
+        "Pin2": "12",
+        "WireID": ""
+      },
+      {
+        "ReferenceDesignator1": "J601A",
+        "Pin1": "3",
+        "ReferenceDesignator2": "P608",
+        "Pin2": "15",
+        "WireID": ""
+      },
+      {
+        "ReferenceDesignator1": "J601A",
+        "Pin1": "24",
+        "ReferenceDesignator2": "P608",
+        "Pin2": "11",
+        "WireID": ""
+      },
+      {
+        "ReferenceDesignator1": "J601A",
+        "Pin1": "22",
+        "ReferenceDesignator2": "P608",
+        "Pin2": "24",
+        "WireID": ""
+      },
+      {
+        "ReferenceDesignator1": "J601A",
+        "Pin1": "31",
+        "ReferenceDesignator2": "P608",
+        "Pin2": "25",
+        "WireID": ""
+      },
+      {
+        "ReferenceDesignator1": "J601A",
+        "Pin1": "32",
+        "ReferenceDesignator2": "P608",
+        "Pin2": "8",
+        "WireID": ""
+      },
+      {
+        "ReferenceDesignator1": "J601A",
+        "Pin1": "9",
+        "ReferenceDesignator2": "P608",
+        "Pin2": "4",
+        "WireID": ""
+      },
+      {
+        "ReferenceDesignator1": "P608",
+        "Pin1": "1",
+        "ReferenceDesignator2": "P604",
+        "Pin2": "A",
+        "WireID": ""
+      },
+      {
+        "ReferenceDesignator1": "P608",
+        "Pin1": "2",
+        "ReferenceDesignator2": "P604",
+        "Pin2": "B",
+        "WireID": ""
+      },
+      {
+        "ReferenceDesignator1": "P608",
+        "Pin1": "14",
+        "ReferenceDesignator2": "P604",
+        "Pin2": "C",
+        "WireID": ""
+      },
+      {
+        "ReferenceDesignator1": "P608",
+        "Pin1": "3",
+        "ReferenceDesignator2": "P604",
+        "Pin2": "D",
+        "WireID": ""
+      },
+      {
+        "ReferenceDesignator1": "P608",
+        "Pin1": "7",
+        "ReferenceDesignator2": "FTR2",
+        "Pin2": "19",
+        "WireID": ""
+      },
+      {
+        "ReferenceDesignator1": "P608",
+        "Pin1": "19",
+        "ReferenceDesignator2": "FTR2",
+        "Pin2": "7",
+        "WireID": ""
+      },
+      {
+        "ReferenceDesignator1": "P608",
+        "Pin1": "20",
+        "ReferenceDesignator2": "P607",
+        "Pin2": "20",
+        "WireID": ""
+      },
+      {
+        "ReferenceDesignator1": "P608",
+        "Pin1": "18",
+        "ReferenceDesignator2": "P607",
+        "Pin2": "19",
+        "WireID": ""
+      },
+      {
+        "ReferenceDesignator1": "P607",
+        "Pin1": "9",
+        "ReferenceDesignator2": "P605",
+        "Pin2": "A",
+        "WireID": ""
+      },
+      {
+        "ReferenceDesignator1": "P607",
+        "Pin1": "7",
+        "ReferenceDesignator2": "P605",
+        "Pin2": "C",
+        "WireID": ""
+      },
+      {
+        "ReferenceDesignator1": "P607",
+        "Pin1": "11",
+        "ReferenceDesignator2": "J609",
+        "Pin2": "1",
+        "WireID": ""
+      },
+      {
+        "ReferenceDesignator1": "P607",
+        "Pin1": "31",
+        "ReferenceDesignator2": "J609",
+        "Pin2": "6",
+        "WireID": ""
+      },
+      {
+        "ReferenceDesignator1": "P607",
+        "Pin1": "16",
+        "ReferenceDesignator2": "J609",
+        "Pin2": "5",
+        "WireID": ""
+      },
+      {
+        "ReferenceDesignator1": "P607",
+        "Pin1": "30",
+        "ReferenceDesignator2": "J609",
+        "Pin2": "9",
+        "WireID": ""
+      },
+      {
+        "ReferenceDesignator1": "P607",
+        "Pin1": "10",
+        "ReferenceDesignator2": "P607",
+        "Pin2": "6",
+        "WireID": ""
+      },
+      {
+        "ReferenceDesignator1": "P607",
+        "Pin1": "27",
+        "ReferenceDesignator2": "P607",
+        "Pin2": "3",
+        "WireID": ""
+      },
+      {
+        "ReferenceDesignator1": "P607",
+        "Pin1": "25",
+        "ReferenceDesignator2": "J699",
+        "Pin2": "39",
+        "WireID": ""
+      },
+      {
+        "ReferenceDesignator1": "P607",
+        "Pin1": "4",
+        "ReferenceDesignator2": "J699",
+        "Pin2": "38",
+        "WireID": ""
+      },
+      {
+        "ReferenceDesignator1": "P607",
+        "Pin1": "5",
+        "ReferenceDesignator2": "J699",
+        "Pin2": "24",
+        "WireID": ""
+      },
+      {
+        "ReferenceDesignator1": "P607",
+        "Pin1": "21",
+        "ReferenceDesignator2": "J699",
+        "Pin2": "7",
+        "WireID": ""
+      },
+      {
+        "ReferenceDesignator1": "P607",
+        "Pin1": "13",
+        "ReferenceDesignator2": "J699",
+        "Pin2": "6",
+        "WireID": ""
+      },
+      {
+        "ReferenceDesignator1": "P607",
+        "Pin1": "1",
+        "ReferenceDesignator2": "J699",
+        "Pin2": "5",
+        "WireID": ""
+      },
+      {
+        "ReferenceDesignator1": "P607",
+        "Pin1": "29",
+        "ReferenceDesignator2": "J699",
+        "Pin2": "23",
+        "WireID": ""
+      },
+      {
+        "ReferenceDesignator1": "P607",
+        "Pin1": "2",
+        "ReferenceDesignator2": "J699",
+        "Pin2": "22",
+        "WireID": ""
+      },
+      {
+        "ReferenceDesignator1": "P605",
+        "Pin1": "D",
+        "ReferenceDesignator2": "J699",
+        "Pin2": "25",
+        "WireID": ""
+      },
+      {
+        "ReferenceDesignator1": "P609",
+        "Pin1": "1",
+        "ReferenceDesignator2": "P609",
+        "Pin2": "6",
+        "WireID": ""
+      },
+      {
+        "ReferenceDesignator1": "P609",
+        "Pin1": "5",
+        "ReferenceDesignator2": "P609",
+        "Pin2": "9",
+        "WireID": ""
+      },
+      {
+        "ReferenceDesignator1": "P602",
+        "Pin1": "A",
+        "ReferenceDesignator2": "J699",
+        "Pin2": "2",
+        "WireID": ""
+      },
+      {
+        "ReferenceDesignator1": "P602",
+        "Pin1": "B",
+        "ReferenceDesignator2": "J699",
+        "Pin2": "1",
+        "WireID": ""
+      },
+      {
+        "ReferenceDesignator1": "P602",
+        "Pin1": "C",
+        "ReferenceDesignator2": "J610",
+        "Pin2": "B",
+        "WireID": ""
+      },
+      {
+        "ReferenceDesignator1": "P602",
+        "Pin1": "D",
+        "ReferenceDesignator2": "J610",
+        "Pin2": "A",
+        "WireID": ""
+      },
+      {
+        "ReferenceDesignator1": "P602",
+        "Pin1": "E",
+        "ReferenceDesignator2": "J699",
+        "Pin2": "35",
+        "WireID": ""
+      },
+      {
+        "ReferenceDesignator1": "P602",
+        "Pin1": "F",
+        "ReferenceDesignator2": "J699",
+        "Pin2": "34",
+        "WireID": ""
+      },
+      {
+        "ReferenceDesignator1": "P602",
+        "Pin1": "G",
+        "ReferenceDesignator2": "J699",
+        "Pin2": "4",
+        "WireID": ""
+      },
+      {
+        "ReferenceDesignator1": "P602",
+        "Pin1": "H",
+        "ReferenceDesignator2": "J699",
+        "Pin2": "3",
+        "WireID": ""
+      },
+      {
+        "ReferenceDesignator1": "P610",
+        "Pin1": "B",
+        "ReferenceDesignator2": "P610",
+        "Pin2": "A",
+        "WireID": ""
+      },
+      {
+        "ReferenceDesignator1": "P606",
+        "Pin1": "1",
+        "ReferenceDesignator2": "P603",
+        "Pin2": "A",
+        "WireID": ""
+      },
+      {
+        "ReferenceDesignator1": "P606",
+        "Pin1": "6",
+        "ReferenceDesignator2": "P603",
+        "Pin2": "C",
+        "WireID": ""
+      },
+      {
+        "ReferenceDesignator1": "P606",
+        "Pin1": "2",
+        "ReferenceDesignator2": "P603",
+        "Pin2": "B",
+        "WireID": ""
+      },
+      {
+        "ReferenceDesignator1": "P606",
+        "Pin1": "7",
+        "ReferenceDesignator2": "P603",
+        "Pin2": "D",
+        "WireID": ""
+      },
+      {
+        "ReferenceDesignator1": "P606",
+        "Pin1": "8",
+        "ReferenceDesignator2": "J699",
+        "Pin2": "20",
+        "WireID": ""
+      },
+      {
+        "ReferenceDesignator1": "P606",
+        "Pin1": "13",
+        "ReferenceDesignator2": "J699",
+        "Pin2": "21",
+        "WireID": ""
+      },
+      {
+        "ReferenceDesignator1": "P606",
+        "Pin1": "10",
+        "ReferenceDesignator2": "J699",
+        "Pin2": "37",
+        "WireID": ""
+      },
+      {
+        "ReferenceDesignator1": "P606",
+        "Pin1": "5",
+        "ReferenceDesignator2": "J699",
+        "Pin2": "36",
+        "WireID": ""
+      },
+      {
+        "ReferenceDesignator1": "J601B",
+        "Pin1": "37",
+        "ReferenceDesignator2": "P616",
+        "Pin2": "4",
+        "WireID": ""
+      },
+      {
+        "ReferenceDesignator1": "J601B",
+        "Pin1": "37",
+        "ReferenceDesignator2": "J699",
+        "Pin2": "33",
+        "WireID": ""
+      },
+      {
+        "ReferenceDesignator1": "J601B",
+        "Pin1": "38",
+        "ReferenceDesignator2": "P616",
+        "Pin2": "12",
+        "WireID": ""
+      },
+      {
+        "ReferenceDesignator1": "J601B",
+        "Pin1": "38",
+        "ReferenceDesignator2": "J699",
+        "Pin2": "32",
+        "WireID": ""
+      },
+      {
+        "ReferenceDesignator1": "J601B",
+        "Pin1": "46",
+        "ReferenceDesignator2": "P611",
+        "Pin2": "J",
+        "WireID": ""
+      },
+      {
+        "ReferenceDesignator1": "J601B",
+        "Pin1": "47",
+        "ReferenceDesignator2": "P611",
+        "Pin2": "K",
+        "WireID": ""
+      },
+      {
+        "ReferenceDesignator1": "J601B",
+        "Pin1": "34",
+        "ReferenceDesignator2": "P619",
+        "Pin2": "12",
+        "WireID": ""
+      },
+      {
+        "ReferenceDesignator1": "J601B",
+        "Pin1": "43",
+        "ReferenceDesignator2": "P619",
+        "Pin2": "15",
+        "WireID": ""
+      },
+      {
+        "ReferenceDesignator1": "J601B",
+        "Pin1": "36",
+        "ReferenceDesignator2": "P619",
+        "Pin2": "28",
+        "WireID": ""
+      },
+      {
+        "ReferenceDesignator1": "J601B",
+        "Pin1": "51",
+        "ReferenceDesignator2": "P619",
+        "Pin2": "24",
+        "WireID": ""
+      },
+      {
+        "ReferenceDesignator1": "J601B",
+        "Pin1": "58",
+        "ReferenceDesignator2": "P619",
+        "Pin2": "23",
+        "WireID": ""
+      },
+      {
+        "ReferenceDesignator1": "J601B",
+        "Pin1": "58",
+        "ReferenceDesignator2": "J699",
+        "Pin2": "44",
+        "WireID": ""
+      },
+      {
+        "ReferenceDesignator1": "J601B",
+        "Pin1": "35",
+        "ReferenceDesignator2": "P619",
+        "Pin2": "18",
+        "WireID": ""
+      },
+      {
+        "ReferenceDesignator1": "J601B",
+        "Pin1": "44",
+        "ReferenceDesignator2": "P619",
+        "Pin2": "22",
+        "WireID": ""
+      },
+      {
+        "ReferenceDesignator1": "J601B",
+        "Pin1": "59",
+        "ReferenceDesignator2": "P619",
+        "Pin2": "26",
+        "WireID": ""
+      },
+      {
+        "ReferenceDesignator1": "J601B",
+        "Pin1": "42",
+        "ReferenceDesignator2": "P617",
+        "Pin2": "23",
+        "WireID": ""
+      },
+      {
+        "ReferenceDesignator1": "J601B",
+        "Pin1": "49",
+        "ReferenceDesignator2": "P617",
+        "Pin2": "5",
+        "WireID": ""
+      },
+      {
+        "ReferenceDesignator1": "J601B",
+        "Pin1": "56",
+        "ReferenceDesignator2": "P617",
+        "Pin2": "17",
+        "WireID": ""
+      },
+      {
+        "ReferenceDesignator1": "J601B",
+        "Pin1": "62",
+        "ReferenceDesignator2": "P617",
+        "Pin2": "16",
+        "WireID": ""
+      },
+      {
+        "ReferenceDesignator1": "J601B",
+        "Pin1": "55",
+        "ReferenceDesignator2": "P617",
+        "Pin2": "21",
+        "WireID": ""
+      },
+      {
+        "ReferenceDesignator1": "J601B",
+        "Pin1": "57",
+        "ReferenceDesignator2": "P617",
+        "Pin2": "12",
+        "WireID": ""
+      },
+      {
+        "ReferenceDesignator1": "J601B",
+        "Pin1": "66",
+        "ReferenceDesignator2": "P617",
+        "Pin2": "15",
+        "WireID": ""
+      },
+      {
+        "ReferenceDesignator1": "J601B",
+        "Pin1": "50",
+        "ReferenceDesignator2": "P617",
+        "Pin2": "11",
+        "WireID": ""
+      },
+      {
+        "ReferenceDesignator1": "J601B",
+        "Pin1": "48",
+        "ReferenceDesignator2": "P617",
+        "Pin2": "24",
+        "WireID": ""
+      },
+      {
+        "ReferenceDesignator1": "J601B",
+        "Pin1": "40",
+        "ReferenceDesignator2": "P617",
+        "Pin2": "25",
+        "WireID": ""
+      },
+      {
+        "ReferenceDesignator1": "J601B",
+        "Pin1": "41",
+        "ReferenceDesignator2": "P617",
+        "Pin2": "8",
+        "WireID": ""
+      },
+      {
+        "ReferenceDesignator1": "J601B",
+        "Pin1": "63",
+        "ReferenceDesignator2": "P617",
+        "Pin2": "4",
+        "WireID": ""
+      },
+      {
+        "ReferenceDesignator1": "P617",
+        "Pin1": "1",
+        "ReferenceDesignator2": "P615",
+        "Pin2": "A",
+        "WireID": ""
+      },
+      {
+        "ReferenceDesignator1": "P617",
+        "Pin1": "2",
+        "ReferenceDesignator2": "P615",
+        "Pin2": "C",
+        "WireID": ""
+      },
+      {
+        "ReferenceDesignator1": "P617",
+        "Pin1": "14",
+        "ReferenceDesignator2": "P615",
+        "Pin2": "B",
+        "WireID": ""
+      },
+      {
+        "ReferenceDesignator1": "P617",
+        "Pin1": "3",
+        "ReferenceDesignator2": "P615",
+        "Pin2": "D",
+        "WireID": ""
+      },
+      {
+        "ReferenceDesignator1": "P617",
+        "Pin1": "7",
+        "ReferenceDesignator2": "FTR1",
+        "Pin2": "19",
+        "WireID": ""
+      },
+      {
+        "ReferenceDesignator1": "P617",
+        "Pin1": "19",
+        "ReferenceDesignator2": "FTR1",
+        "Pin2": "7",
+        "WireID": ""
+      },
+      {
+        "ReferenceDesignator1": "P617",
+        "Pin1": "20",
+        "ReferenceDesignator2": "P619",
+        "Pin2": "20",
+        "WireID": ""
+      },
+      {
+        "ReferenceDesignator1": "P617",
+        "Pin1": "18",
+        "ReferenceDesignator2": "P619",
+        "Pin2": "19",
+        "WireID": ""
+      },
+      {
+        "ReferenceDesignator1": "P619",
+        "Pin1": "9",
+        "ReferenceDesignator2": "P614",
+        "Pin2": "A",
+        "WireID": ""
+      },
+      {
+        "ReferenceDesignator1": "P619",
+        "Pin1": "7",
+        "ReferenceDesignator2": "P614",
+        "Pin2": "C",
+        "WireID": ""
+      },
+      {
+        "ReferenceDesignator1": "P619",
+        "Pin1": "11",
+        "ReferenceDesignator2": "J618",
+        "Pin2": "1",
+        "WireID": ""
+      },
+      {
+        "ReferenceDesignator1": "P619",
+        "Pin1": "31",
+        "ReferenceDesignator2": "J618",
+        "Pin2": "6",
+        "WireID": ""
+      },
+      {
+        "ReferenceDesignator1": "P619",
+        "Pin1": "16",
+        "ReferenceDesignator2": "J618",
+        "Pin2": "5",
+        "WireID": ""
+      },
+      {
+        "ReferenceDesignator1": "P619",
+        "Pin1": "30",
+        "ReferenceDesignator2": "J618",
+        "Pin2": "9",
+        "WireID": ""
+      },
+      {
+        "ReferenceDesignator1": "P619",
+        "Pin1": "10",
+        "ReferenceDesignator2": "P619",
+        "Pin2": "6",
+        "WireID": ""
+      },
+      {
+        "ReferenceDesignator1": "P619",
+        "Pin1": "27",
+        "ReferenceDesignator2": "P619",
+        "Pin2": "3",
+        "WireID": ""
+      },
+      {
+        "ReferenceDesignator1": "P619",
+        "Pin1": "25",
+        "ReferenceDesignator2": "J699",
+        "Pin2": "45",
+        "WireID": ""
+      },
+      {
+        "ReferenceDesignator1": "P619",
+        "Pin1": "4",
+        "ReferenceDesignator2": "J699",
+        "Pin2": "46",
+        "WireID": ""
+      },
+      {
+        "ReferenceDesignator1": "P619",
+        "Pin1": "5",
+        "ReferenceDesignator2": "J699",
+        "Pin2": "27",
+        "WireID": ""
+      },
+      {
+        "ReferenceDesignator1": "P619",
+        "Pin1": "21",
+        "ReferenceDesignator2": "J699",
+        "Pin2": "11",
+        "WireID": ""
+      },
+      {
+        "ReferenceDesignator1": "P619",
+        "Pin1": "13",
+        "ReferenceDesignator2": "J699",
+        "Pin2": "12",
+        "WireID": ""
+      },
+      {
+        "ReferenceDesignator1": "P619",
+        "Pin1": "1",
+        "ReferenceDesignator2": "J699",
+        "Pin2": "13",
+        "WireID": ""
+      },
+      {
+        "ReferenceDesignator1": "P619",
+        "Pin1": "29",
+        "ReferenceDesignator2": "J699",
+        "Pin2": "28",
+        "WireID": ""
+      },
+      {
+        "ReferenceDesignator1": "P619",
+        "Pin1": "2",
+        "ReferenceDesignator2": "J699",
+        "Pin2": "29",
+        "WireID": ""
+      },
+      {
+        "ReferenceDesignator1": "P614",
+        "Pin1": "D",
+        "ReferenceDesignator2": "J699",
+        "Pin2": "26",
+        "WireID": ""
+      },
+      {
+        "ReferenceDesignator1": "P618",
+        "Pin1": "1",
+        "ReferenceDesignator2": "P618",
+        "Pin2": "6",
+        "WireID": ""
+      },
+      {
+        "ReferenceDesignator1": "P618",
+        "Pin1": "5",
+        "ReferenceDesignator2": "P618",
+        "Pin2": "9",
+        "WireID": ""
+      },
+      {
+        "ReferenceDesignator1": "P611",
+        "Pin1": "A",
+        "ReferenceDesignator2": "J699",
+        "Pin2": "16",
+        "WireID": ""
+      },
+      {
+        "ReferenceDesignator1": "P611",
+        "Pin1": "B",
+        "ReferenceDesignator2": "J699",
+        "Pin2": "17",
+        "WireID": ""
+      },
+      {
+        "ReferenceDesignator1": "P611",
+        "Pin1": "C",
+        "ReferenceDesignator2": "J612",
+        "Pin2": "B",
+        "WireID": ""
+      },
+      {
+        "ReferenceDesignator1": "P611",
+        "Pin1": "D",
+        "ReferenceDesignator2": "J612",
+        "Pin2": "A",
+        "WireID": ""
+      },
+      {
+        "ReferenceDesignator1": "P611",
+        "Pin1": "E",
+        "ReferenceDesignator2": "J699",
+        "Pin2": "49",
+        "WireID": ""
+      },
+      {
+        "ReferenceDesignator1": "P611",
+        "Pin1": "F",
+        "ReferenceDesignator2": "J699",
+        "Pin2": "50",
+        "WireID": ""
+      },
+      {
+        "ReferenceDesignator1": "P611",
+        "Pin1": "G",
+        "ReferenceDesignator2": "J699",
+        "Pin2": "14",
+        "WireID": ""
+      },
+      {
+        "ReferenceDesignator1": "P611",
+        "Pin1": "H",
+        "ReferenceDesignator2": "J699",
+        "Pin2": "15",
+        "WireID": ""
+      },
+      {
+        "ReferenceDesignator1": "P612",
+        "Pin1": "B",
+        "ReferenceDesignator2": "P612",
+        "Pin2": "A",
+        "WireID": ""
+      },
+      {
+        "ReferenceDesignator1": "P616",
+        "Pin1": "1",
+        "ReferenceDesignator2": "P613",
+        "Pin2": "A",
+        "WireID": ""
+      },
+      {
+        "ReferenceDesignator1": "P616",
+        "Pin1": "6",
+        "ReferenceDesignator2": "P613",
+        "Pin2": "C",
+        "WireID": ""
+      },
+      {
+        "ReferenceDesignator1": "P616",
+        "Pin1": "2",
+        "ReferenceDesignator2": "P613",
+        "Pin2": "B",
+        "WireID": ""
+      },
+      {
+        "ReferenceDesignator1": "P616",
+        "Pin1": "7",
+        "ReferenceDesignator2": "P613",
+        "Pin2": "D",
+        "WireID": ""
+      },
+      {
+        "ReferenceDesignator1": "P616",
+        "Pin1": "8",
+        "ReferenceDesignator2": "J699",
+        "Pin2": "31",
+        "WireID": ""
+      },
+      {
+        "ReferenceDesignator1": "P616",
+        "Pin1": "13",
+        "ReferenceDesignator2": "J699",
+        "Pin2": "30",
+        "WireID": ""
+      },
+      {
+        "ReferenceDesignator1": "P616",
+        "Pin1": "10",
+        "ReferenceDesignator2": "J699",
+        "Pin2": "47",
+        "WireID": ""
+      },
+      {
+        "ReferenceDesignator1": "P616",
+        "Pin1": "5",
+        "ReferenceDesignator2": "J699",
+        "Pin2": "48",
+        "WireID": ""
+      },
+      {
+        "ReferenceDesignator1": "P601A",
+        "Pin1": "28",
+        "ReferenceDesignator2": "P601",
+        "Pin2": "28",
+        "WireID": ""
+      },
+      {
+        "ReferenceDesignator1": "P601A",
+        "Pin1": "29",
+        "ReferenceDesignator2": "P601",
+        "Pin2": "29",
+        "WireID": ""
+      },
+      {
+        "ReferenceDesignator1": "P601A",
+        "Pin1": "20",
+        "ReferenceDesignator2": "P601",
+        "Pin2": "20",
+        "WireID": ""
+      },
+      {
+        "ReferenceDesignator1": "P601A",
+        "Pin1": "21",
+        "ReferenceDesignator2": "P601",
+        "Pin2": "21",
+        "WireID": ""
+      },
+      {
+        "ReferenceDesignator1": "P601A",
+        "Pin1": "25",
+        "ReferenceDesignator2": "P601",
+        "Pin2": "25",
+        "WireID": ""
+      },
+      {
+        "ReferenceDesignator1": "P601A",
+        "Pin1": "17",
+        "ReferenceDesignator2": "P601",
+        "Pin2": "17",
+        "WireID": ""
+      },
+      {
+        "ReferenceDesignator1": "P601A",
+        "Pin1": "27",
+        "ReferenceDesignator2": "P601",
+        "Pin2": "27",
+        "WireID": ""
+      },
+      {
+        "ReferenceDesignator1": "P601A",
+        "Pin1": "10",
+        "ReferenceDesignator2": "P601",
+        "Pin2": "10",
+        "WireID": ""
+      },
+      {
+        "ReferenceDesignator1": "P601A",
+        "Pin1": "11",
+        "ReferenceDesignator2": "P601",
+        "Pin2": "11",
+        "WireID": ""
+      },
+      {
+        "ReferenceDesignator1": "P601A",
+        "Pin1": "4",
+        "ReferenceDesignator2": "P601",
+        "Pin2": "4",
+        "WireID": ""
+      },
+      {
+        "ReferenceDesignator1": "P601A",
+        "Pin1": "26",
+        "ReferenceDesignator2": "P601",
+        "Pin2": "26",
+        "WireID": ""
+      },
+      {
+        "ReferenceDesignator1": "P601A",
+        "Pin1": "18",
+        "ReferenceDesignator2": "P601",
+        "Pin2": "18",
+        "WireID": ""
+      },
+      {
+        "ReferenceDesignator1": "P601A",
+        "Pin1": "5",
+        "ReferenceDesignator2": "P601",
+        "Pin2": "5",
+        "WireID": ""
+      },
+      {
+        "ReferenceDesignator1": "P601A",
+        "Pin1": "33",
+        "ReferenceDesignator2": "P601",
+        "Pin2": "33",
+        "WireID": ""
+      },
+      {
+        "ReferenceDesignator1": "P601A",
+        "Pin1": "23",
+        "ReferenceDesignator2": "P601",
+        "Pin2": "23",
+        "WireID": ""
+      },
+      {
+        "ReferenceDesignator1": "P601A",
+        "Pin1": "15",
+        "ReferenceDesignator2": "P601",
+        "Pin2": "15",
+        "WireID": ""
+      },
+      {
+        "ReferenceDesignator1": "P601A",
+        "Pin1": "8",
+        "ReferenceDesignator2": "P601",
+        "Pin2": "8",
+        "WireID": ""
+      },
+      {
+        "ReferenceDesignator1": "P601A",
+        "Pin1": "14",
+        "ReferenceDesignator2": "P601",
+        "Pin2": "14",
+        "WireID": ""
+      },
+      {
+        "ReferenceDesignator1": "P601A",
+        "Pin1": "16",
+        "ReferenceDesignator2": "P601",
+        "Pin2": "16",
+        "WireID": ""
+      },
+      {
+        "ReferenceDesignator1": "P601A",
+        "Pin1": "3",
+        "ReferenceDesignator2": "P601",
+        "Pin2": "3",
+        "WireID": ""
+      },
+      {
+        "ReferenceDesignator1": "P601A",
+        "Pin1": "24",
+        "ReferenceDesignator2": "P601",
+        "Pin2": "24",
+        "WireID": ""
+      },
+      {
+        "ReferenceDesignator1": "P601A",
+        "Pin1": "32",
+        "ReferenceDesignator2": "P601",
+        "Pin2": "32",
+        "WireID": ""
+      },
+      {
+        "ReferenceDesignator1": "P601A",
+        "Pin1": "22",
+        "ReferenceDesignator2": "P601",
+        "Pin2": "22",
+        "WireID": ""
+      },
+      {
+        "ReferenceDesignator1": "P601A",
+        "Pin1": "31",
+        "ReferenceDesignator2": "P601",
+        "Pin2": "31",
+        "WireID": ""
+      },
+      {
+        "ReferenceDesignator1": "P601A",
+        "Pin1": "9",
+        "ReferenceDesignator2": "P601",
+        "Pin2": "9",
+        "WireID": ""
+      },
+      {
+        "ReferenceDesignator1": "P601A",
+        "Pin1": "37",
+        "ReferenceDesignator2": "P601",
+        "Pin2": "37",
+        "WireID": ""
+      },
+      {
+        "ReferenceDesignator1": "P601A",
+        "Pin1": "38",
+        "ReferenceDesignator2": "P601",
+        "Pin2": "38",
+        "WireID": ""
+      },
+      {
+        "ReferenceDesignator1": "P601A",
+        "Pin1": "46",
+        "ReferenceDesignator2": "P601",
+        "Pin2": "46",
+        "WireID": ""
+      },
+      {
+        "ReferenceDesignator1": "P601A",
+        "Pin1": "47",
+        "ReferenceDesignator2": "P601",
+        "Pin2": "47",
+        "WireID": ""
+      },
+      {
+        "ReferenceDesignator1": "P601A",
+        "Pin1": "34",
+        "ReferenceDesignator2": "P601",
+        "Pin2": "34",
+        "WireID": ""
+      },
+      {
+        "ReferenceDesignator1": "P601A",
+        "Pin1": "43",
+        "ReferenceDesignator2": "P601",
+        "Pin2": "43",
+        "WireID": ""
+      },
+      {
+        "ReferenceDesignator1": "P601A",
+        "Pin1": "36",
+        "ReferenceDesignator2": "P601",
+        "Pin2": "36",
+        "WireID": ""
+      },
+      {
+        "ReferenceDesignator1": "P601A",
+        "Pin1": "51",
+        "ReferenceDesignator2": "P601",
+        "Pin2": "51",
+        "WireID": ""
+      },
+      {
+        "ReferenceDesignator1": "P601A",
+        "Pin1": "52",
+        "ReferenceDesignator2": "P601",
+        "Pin2": "52",
+        "WireID": ""
+      },
+      {
+        "ReferenceDesignator1": "P601A",
+        "Pin1": "58",
+        "ReferenceDesignator2": "P601",
+        "Pin2": "58",
+        "WireID": ""
+      },
+      {
+        "ReferenceDesignator1": "P601A",
+        "Pin1": "35",
+        "ReferenceDesignator2": "P601",
+        "Pin2": "35",
+        "WireID": ""
+      },
+      {
+        "ReferenceDesignator1": "P601A",
+        "Pin1": "44",
+        "ReferenceDesignator2": "P601",
+        "Pin2": "44",
+        "WireID": ""
+      },
+      {
+        "ReferenceDesignator1": "P601A",
+        "Pin1": "59",
+        "ReferenceDesignator2": "P601",
+        "Pin2": "59",
+        "WireID": ""
+      },
+      {
+        "ReferenceDesignator1": "P601A",
+        "Pin1": "42",
+        "ReferenceDesignator2": "P601",
+        "Pin2": "42",
+        "WireID": ""
+      },
+      {
+        "ReferenceDesignator1": "P601A",
+        "Pin1": "49",
+        "ReferenceDesignator2": "P601",
+        "Pin2": "49",
+        "WireID": ""
+      },
+      {
+        "ReferenceDesignator1": "P601A",
+        "Pin1": "56",
+        "ReferenceDesignator2": "P601",
+        "Pin2": "56",
+        "WireID": ""
+      },
+      {
+        "ReferenceDesignator1": "P601A",
+        "Pin1": "62",
+        "ReferenceDesignator2": "P601",
+        "Pin2": "62",
+        "WireID": ""
+      },
+      {
+        "ReferenceDesignator1": "P601A",
+        "Pin1": "55",
+        "ReferenceDesignator2": "P601",
+        "Pin2": "55",
+        "WireID": ""
+      },
+      {
+        "ReferenceDesignator1": "P601A",
+        "Pin1": "57",
+        "ReferenceDesignator2": "P601",
+        "Pin2": "57",
+        "WireID": ""
+      },
+      {
+        "ReferenceDesignator1": "P601A",
+        "Pin1": "66",
+        "ReferenceDesignator2": "P601",
+        "Pin2": "66",
+        "WireID": ""
+      },
+      {
+        "ReferenceDesignator1": "P601A",
+        "Pin1": "50",
+        "ReferenceDesignator2": "P601",
+        "Pin2": "50",
+        "WireID": ""
+      },
+      {
+        "ReferenceDesignator1": "P601A",
+        "Pin1": "41",
+        "ReferenceDesignator2": "P601",
+        "Pin2": "41",
+        "WireID": ""
+      },
+      {
+        "ReferenceDesignator1": "P601A",
+        "Pin1": "48",
+        "ReferenceDesignator2": "P601",
+        "Pin2": "48",
+        "WireID": ""
+      },
+      {
+        "ReferenceDesignator1": "P601A",
+        "Pin1": "40",
+        "ReferenceDesignator2": "P601",
+        "Pin2": "40",
+        "WireID": ""
+      },
+      {
+        "ReferenceDesignator1": "P601A",
+        "Pin1": "63",
+        "ReferenceDesignator2": "P601",
+        "Pin2": "63",
+        "WireID": ""
+      }
+    ],
+    "ConnectorComponentDictionary": null,
+    "ComponentPinDefinitions": {
+      "ResistorDefinitions": [],
+      "CapacitorDefinitions": [],
+      "DiodePinDefinitions": [],
+      "SpeakerPinDefinitions": [],
+      "RelayPinDefinitions": [],
+      "SwitchPinDefinitions": [],
+      "ShortingBlockDefinitions": []
+    }
+  }
+}
