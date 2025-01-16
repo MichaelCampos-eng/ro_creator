@@ -1,15 +1,22 @@
 from dataclasses import dataclass
-from typing import Optional
+from typing import Optional, Union
 
 @dataclass
 class TestConfig:
-    task: str
-    file_test_name: str
-    file_test_mode: str
-    file_location: Optional[str]
-    test_param: str
-    unused_pins: str
-    wire_list: str
+    block_name: str
+    param: str
 
+@dataclass
 class Config:
-    tests: str
+    results_path: str
+    wire_list_path: str
+    unused_pins_path: str
+    ground_path: str
+
+    continuity: bool
+    isolation: bool
+    hipot: bool
+
+    continuity_cfg: TestConfig
+    isolation_cfg: TestConfig
+    hipot_cfg: TestConfig

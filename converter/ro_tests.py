@@ -1,11 +1,12 @@
 import pandas as pd
 import natsort as ns
 
+from config_classes.config import *
+
 class BaseTest:
 
-    def __init__(self, block_name: str, params: str):
-        self.block_name = block_name
-        self.params = params
+    def __init__(self, conf: TestConfig):
+        self.conf = conf
 
     def __to_input__(self) -> str:
         pass
@@ -18,8 +19,8 @@ class BaseTest:
 
 class ContinuityTest(BaseTest):
 
-    def __init__(self, block_name: str, params: str):
-        super().__init__(block_name, params)
+    def __init__(self, conf: TestConfig):
+        super().__init__(conf)
 
     def to_output(row) -> str:
         pin = "-" + str(row["PIN LEFT"]) + "\n" if row["PIN LEFT"] != "" else "\n"
@@ -34,16 +35,16 @@ class ContinuityTest(BaseTest):
             sorted_cont_pts = pd.Series(ns.natsorted(group.apply(self.to_multiple_continuity, axis=1)))
             sorted_cont_pts.iloc[-1] = sorted_cont_pts.iloc[-1].replace("CV-", "C-")
             return pd.Series(sorted_cont_pts.agg("sum"))
-        return group.apply(self.__to_input__, axis=1)
+        return group.apply(self.to_input_group, axis=1).reset_index(drop=True)
             
-    def to_multiple_continuity(self, row) -> str:
+    def __to_multiple_continuity__(self, row) -> str:
         pin = "-" + str(row["PIN RIGHT"]) + "\n" if row["PIN RIGHT"] != "" else "\n"
         return "CV-" + str(row["TO"]) + pin
 
     def __convert__(self, df: pd.DataFrame) -> pd.DataFrame:
         cont_df = df.copy()
         cont_df["output"] = cont_df.apply(self.to_output, axis=1)
-        cont_df = cont_df.groupby("output").apply(self.to_input_continuity, include_groups=False).reset_index(name="input").drop("level_1", axis=1)
+        cont_df = cont_df.groupby("output").apply(self.__to_input__, include_groups=False).reset_index().rename(columns={0:"input"})
         cont_df["continuity"] = pd.Series(ns.natsorted(cont_df.apply("sum", axis=1)))
         return cont_df
 
@@ -55,8 +56,8 @@ class ContinuityTest(BaseTest):
     
 class HipotTest(BaseTest):
 
-    def __init__(self, block_name: str, params: str):
-        super().__init__(block_name, params)
+    def __init__(self, conf: TestConfig):
+        super().__init__(conf)
 
     def __to_input__(self, row) -> str:
         return "\nD-" + str(row["Connector"]) + "-" + str(row["Pin"]) + "\n"
@@ -78,8 +79,8 @@ class HipotTest(BaseTest):
 
 class IsolationTest(BaseTest):
 
-    def __init__(self, block_name: str, params: str):
-        super().__init__(block_name, params)
+    def __init__(self, conf: TestConfig):
+        super().__init__(conf)
 
     def __to_input__(self, row):
         return "\nD-" + str(row["Connector"]) + "-" + str(row["Pin"]) + "\n"

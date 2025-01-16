@@ -1,6 +1,6 @@
 import pandas as pd
 from config_classes.config import Config
-from converter.test import *
+from converter.ro_tests import *
 
 class DitmcoTest:
 
@@ -8,20 +8,22 @@ class DitmcoTest:
         self.cfg = cfg
         self.df = pd.read_csv(cfg.csv_path)
     
-    def produce_test_ro_file(self):
+    def produce_test(self):
+        tests = []
+        if self.cfg.continuity:
+            tests.append(ContinuityTest(self.cfg.continuity_cfg))
+        if self.cfg.isolation:
+            tests.append(IsolationTest(self.cfg.isolation_cfg))
+        if self.cfg.hipot:
+            tests.append(HipotTest(self.cfg.hipot_cfg))
+        self.__combine_tests__(tests=tests)
 
-        """
-        continuity_test = ContinuityTest(block_name, params)
-        isolation_test = IsolationTest(block_name, params)
-        isolation_test = HipotTest(block_name, params)
-
-        continuity_test.run
-        
-        """ 
-
-        for task in self.cfg.tasks:
-            if task.name == "continuity":
-                cont_test = ContinuityTest(task.block_name, task.param)
-                cont_test.convert_to_test(df=self.df)
-        
-        return
+    def __combine_tests__(self, tests: list[BaseTest]):
+        final_test = ""
+        for test in tests:
+            final_test += test.convert_to_test()
+        return final_test
+    
+    def save_as(self, test_str):
+        with open(self.cfg.file_name, "w") as file:
+            file.write(test_str)

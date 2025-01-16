@@ -68,11 +68,9 @@ def main():
         new_row = pd.DataFrame({left_column: [left_command.replace(" ", "")], 
                                 right_column: [right_command.replace(" ", "")]})
         df = pd.concat([df, new_row])
-
         df_sorted = df.apply(lambda row: tuple(sorted([row[left_column], row[right_column]])), axis=1)
         df_no_duplicates = pd.DataFrame(df_sorted, columns=['pair']).drop_duplicates()
         df = pd.DataFrame(df_no_duplicates['pair'].to_list(), columns=[left_column, right_column])
-        
         display(df)
 
 if __name__ == "__main__":
