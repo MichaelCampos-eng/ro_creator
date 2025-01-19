@@ -24,8 +24,7 @@ class DitmcoList():
                 if self.table.is_remove(arg):
                     self.table.remove_entry(arg)
                     continue
-                if not self.valid_args(arg):
-                    
+                if not self.valid_arg(arg):
                     values = []
                     break
                 values.append(arg)
@@ -44,8 +43,8 @@ class DitmcoList():
     def save_parsed(self, values):
         self.table.update(values)
 
-    def valid_args(self, value):
-        return len(value) == 1
+    def valid_arg(self, arg):
+        return len(arg) == 1
 
 class WireList(DitmcoList):
 
@@ -55,7 +54,7 @@ class WireList(DitmcoList):
         self.table_col_names = ["FROM", "PIN LEFT", "TO", "PIN RIGHT"]
         self.table = ConnectionTable(self.table_col_names, file_path, "Wire List") 
 
-    def valid_args(self, arg):
+    def valid_arg(self, arg):
         args = arg.split(" ")
         if arg.isspace():
             return False
@@ -65,20 +64,33 @@ class WireList(DitmcoList):
             return False
         return True
         
-    def save_parsed(self, args):
-        values = []
-        for arg in args:
-            values += arg.split(" ")
-        self.table.update(values)
+    def save_parsed(self, values):
+        parsed_values = []
+        for arg in values:
+            parsed_values += arg.split(" ")
+        self.table.update(parsed_values)
         
 
 class IsolatedList(DitmcoList):
 
     def __init__(self, file_path: str):
         super().__init__(file_path)
-        self.arg_names = ["'REF DES'", "'PIN'"]
+        self.arg_names = ["'REF DES' (space) 'PIN'"]
         self.table_col_names = ["'REF DES'", "'PIN'"]
-        self.table = ConnectionTable(self.column_names, file_path, "'Unused Pin List'")
+        self.table = ConnectionTable(self.table_col_names, file_path, "'Unused Pin List'")
+
+    def valid_arg(self, arg):
+        args = arg.split(" ")
+        if arg.isspace():
+            return False
+        if len(args) != 2:
+            return False
+        if args[0] == '' or args[1] == '':
+            return False
+        return True
+    
+    def save_parsed(self, values):
+        self.table.update(values[0].split(" "))
 
 class GroundList(DitmcoList):
 
@@ -86,5 +98,5 @@ class GroundList(DitmcoList):
         super().__init__(file_path)
         self.arg_names = ["'Connector", "'Ground'"] 
         self.table_col_names = ["'Connector", "'Ground'"]
-        self.table = ConnectionTable(self.column_names, file_path, "'Ground Connection List'")
+        self.table = ConnectionTable(self.table_col_names, file_path, "'Ground Connection List'")
     

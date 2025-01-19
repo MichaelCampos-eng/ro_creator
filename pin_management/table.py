@@ -30,10 +30,9 @@ class ConnectionTable:
             self.display()
             print(f"Entry at index {index} removed\n")
         except Exception as e:
-            print(f"Invalid integer: {command[1]}")
+            print(f"Invalid index: {command[1]}")
 
     def update(self, values):
-        print(values)
         new_entry = pd.DataFrame({self.df.columns[i]: [values[i].replace(" ", "")] for i in range(len(self.df.columns))})
         self.df = pd.concat([self.df, new_entry])
         indices = self.df.apply(lambda row: tuple(sorted(row)), axis=1).drop_duplicates().reset_index(drop=True).index.to_list()

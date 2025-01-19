@@ -23,8 +23,10 @@ def main(cfg: Config):
             GroundList(file_path="testing") 
         
         elif cfg.task == "Unused Pins":
-            IsolatedList(file_path="testing")
-        
+            unused_pins = IsolatedList(file_path="testing")
+            unused_pins.begin_manual()
+            break
+
         elif cfg.task == "Create RO":
             return
         
