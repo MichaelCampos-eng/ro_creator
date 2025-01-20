@@ -1,5 +1,5 @@
 from config_classes.config import Config
-from pin_management.pin_connection import *
+from pin_management.list_manager import *
 import hydra
 
 

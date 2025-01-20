@@ -6,7 +6,6 @@ class ConnectionTable:
         self.file_path = file_path
         self.table_name = table_name
         self.df = pd.DataFrame(columns=column_names)
-        self.col_num = len(column_names)
 
     def save_as(self):
         print(f"\nSaving dataframe as {self.table_name}...")
@@ -18,9 +17,6 @@ class ConnectionTable:
         print(self.table_name)
         print(self.df)
         print("======================\n")
-    
-    def is_remove(self, command: str):
-        return command.split(" ")[0] == "remove"
 
     def remove_entry(self, command: str):
         try: 

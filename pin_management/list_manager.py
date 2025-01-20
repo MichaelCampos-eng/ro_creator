@@ -6,45 +6,53 @@ class DitmcoList():
 
     def __init__(self, file_path: str):
         self.file_path = file_path
+        self.args = []
         self.arg_names = []
         self.table_col_names = []
         self.table: ConnectionTable = None
-        self.clear = lambda: os.system('cls') 
+        self.clear = lambda: os.system('cls')
 
-    def begin_manual(self):
+    def begin_cli(self):
         self.clear()
         while True:
-            values = []
-            for column in self.arg_names:
-                arg = input(f"Enter {column}: ")
-                if arg == "Q":
+            arg = input(f"Enter {self.fetch_curr_arg_name()}: ")
+            try: 
+                if self.__is_quit__(arg):
                     self.clear()
                     self.table.save_as()
                     sys.exit()
-                if self.table.is_remove(arg):
-                    self.table.remove_entry(arg)
-                    continue
-                if not self.valid_arg(arg):
-                    values = []
-                    break
-                values.append(arg)
-            if len(values) != len(self.arg_names):
-                print("Invalid args, try again")
-                continue
-            self.save_parsed(values)
-            self.clear()
-            self.table.display()
-            values = []
-    
-    # TODO: Object detection needs to be done first
-    def begin_auto(self):
-        pass
+                self.step(arg)
+                self.clear()
+                self.table.display()
+            except ValueError as e:
+                print(str(e))
 
-    def save_parsed(self, values):
-        self.table.update(values)
+    def step(self, arg):
+        if self.__is_remove__(arg):
+            self.table.remove_entry(arg)
+            return
+        if not self.__valid__(arg):
+            raise ValueError("In__valid__ argument, try again!")
+        self.args.append(arg)
+        if len(self.args) == len(self.arg_names):
+            self.__parse_save__()
+            self.args = []
+            return 
 
-    def valid_arg(self, arg):
+    def fetch_curr_arg_name(self):
+        return self.arg_names[len(self.args)]
+
+    def __parse_save__(self):
+        self.table.update(self.args)
+
+    def __valid__(self, arg):
         return len(arg) == 1
+    
+    def __is_remove__(self, command: str):
+        return command.split(" ")[0] == "remove"
+    
+    def __is_quit__(self, command: str):
+        return command == "Q"
 
 class WireList(DitmcoList):
 
@@ -54,7 +62,7 @@ class WireList(DitmcoList):
         self.table_col_names = ["FROM", "PIN LEFT", "TO", "PIN RIGHT"]
         self.table = ConnectionTable(self.table_col_names, file_path, "Wire List") 
 
-    def valid_arg(self, arg):
+    def __valid__(self, arg):
         args = arg.split(" ")
         if arg.isspace():
             return False
@@ -64,9 +72,9 @@ class WireList(DitmcoList):
             return False
         return True
         
-    def save_parsed(self, values):
+    def __parse_save__(self):
         parsed_values = []
-        for arg in values:
+        for arg in self.args:
             parsed_values += arg.split(" ")
         self.table.update(parsed_values)
         
@@ -79,7 +87,7 @@ class IsolatedList(DitmcoList):
         self.table_col_names = ["'REF DES'", "'PIN'"]
         self.table = ConnectionTable(self.table_col_names, file_path, "'Unused Pin List'")
 
-    def valid_arg(self, arg):
+    def __valid__(self, arg):
         args = arg.split(" ")
         if arg.isspace():
             return False
@@ -89,8 +97,8 @@ class IsolatedList(DitmcoList):
             return False
         return True
     
-    def save_parsed(self, values):
-        self.table.update(values[0].split(" "))
+    def __parse_save__(self):
+        self.table.update(self.args[0].split(" "))
 
 class GroundList(DitmcoList):
 
