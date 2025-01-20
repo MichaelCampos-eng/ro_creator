@@ -1,6 +1,7 @@
 from pin_management.table import ConnectionTable
 import os
 import sys
+import pandas as pd
 
 class DitmcoList():
 
@@ -11,6 +12,10 @@ class DitmcoList():
         self.table_col_names = []
         self.table: ConnectionTable = None
         self.clear = lambda: os.system('cls')
+    
+    def import_list(self, csv_path):
+        self.table.open(csv_path)
+        self.args = []
 
     def begin_cli(self):
         self.clear()

@@ -1,18 +1,19 @@
 results_path: str
-wire_list_path: str
-unused_pins_path: str
-ground_path: str
+spreadsheets_path: str
 
-continuity: true
-isolation: true
-hipot: true
-
-continuity_cfg: 
+continuity_cfg:
+  execute: true
   block_name: CONTINUITY_TESTS
-  param: none
+  param: C 0.100A <5R 0.001T 0.010S
+leakage_cfg:
+  execute: true
+  block_name: LEAKAGE_TESTS
+  param: F 35V ROFF >10M 0.010T 0.020S
 isolation_cfg:
+  execute: true
   block_name: ISOLATION_TESTS
-  param: none
+  param: T 500V ROFF >10M 0.010T 0.020S
 hipot_cfg:
+  execute: true
   block_name: HIPOT_TESTS
-  param: none
+  param: D HIP 500V 0.5MA ROFF 0.010T 0.020S

@@ -8,6 +8,9 @@ class ConnectionTable:
         self.table_name = table_name
         self.df = pd.DataFrame(columns=column_names)
 
+    def open(self, csv_path):
+        self.df = pd.read_csv(csv_path)
+
     def save_as(self):
         table_name = self.table_name.replace(" ", "_").lower()
         serial_num = ''.join([str(rd.randint(0, 9)) for _ in range(5)])
