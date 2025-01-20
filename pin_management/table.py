@@ -1,4 +1,5 @@
 import pandas as pd
+import random as rd
 
 class ConnectionTable:
     
@@ -8,8 +9,11 @@ class ConnectionTable:
         self.df = pd.DataFrame(columns=column_names)
 
     def save_as(self):
-        print(f"\nSaving dataframe as {self.table_name}...")
-        self.df.to_csv(f"{self.file_path}/{self.table_name}.csv", index=False)
+        table_name = self.table_name.replace(" ", "_").lower()
+        serial_num = ''.join([str(rd.randint(0, 9)) for _ in range(5)])
+        file_full_name = f"{self.file_path}/{table_name}_{serial_num}.csv"
+        print(f"\nSaving dataframe as {file_full_name}...")
+        self.df.to_csv(file_full_name, index=False)
         print("Saved!\n")
 
     def display(self):

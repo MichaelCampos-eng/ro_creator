@@ -14,15 +14,15 @@ def main(cfg: Config):
         4) Produce test continuity 
         """
 
-        if cfg.task == "Wire List":
+        if cfg.task == "wire_list":
             wire_list = WireList(file_path="testing")
             wire_list.begin_manual()
             break
         
-        elif cfg.task == "Ground List":
+        elif cfg.task == "ground_list":
             GroundList(file_path="testing") 
         
-        elif cfg.task == "Unused Pins":
+        elif cfg.task == "unused_pins":
             unused_pins = IsolatedList(file_path="testing")
             unused_pins.begin_manual()
             break
