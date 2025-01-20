@@ -1,4 +1,4 @@
-from setuptools import setup 
+from setuptools import setup, find_packages
   
 setup( 
     name='wrman', 
@@ -6,7 +6,7 @@ setup(
     description='Maps wiring connections', 
     author='Michael Campos', 
     author_email='michael_c55@berkeley.edu', 
-    packages=['my_package'], 
+    packages=find_packages(), 
     install_requires=[ 
         'hydra-core', 
         'pandas',
