@@ -6,58 +6,60 @@ import pandas as pd
 class DitmcoList():
 
     def __init__(self):
-        self.file_path = file_path
-        self.args = []
-        self.arg_names = []
-        self.table_col_names = []
-        self.table: ConnectionTable = None
-        self.clear = lambda: os.system('cls')
+        self.__args__ = []
+        self.__arg_names__ = []
+        self.__table_col_names__ = []
+        self.__table__: ConnectionTable = None
+        self.__clear__ = lambda: os.system('cls')
     
     def import_list(self, csv_path):
-        self.table.open(csv_path)
-        self.args = []
+        self.__table__.open(csv_path)
+        self.__args__ = []
 
     def begin_cli(self, file_path):
-        self.clear()
+        self.__clear__()
         while True:
             arg = input(f"Enter {self.fetch_curr_arg_name()}: ")
             try: 
                 if self.__is_quit__(arg):
-                    self.clear()
-                    self.table.save_as(file_path=file_path)
+                    self.__clear__()
+                    self.__table__.save_as(file_path=file_path)
                     sys.exit()
                 self.step(arg)
-                self.clear()
-                self.table.display()
+                self.__clear__()
+                self.__table__.display()
             except ValueError as e:
                 print(str(e))
 
     def step(self, arg):
         if self.__is_remove__(arg):
-            self.table.remove_entry(arg)
+            self.__table__.remove_entry(arg)
             return
         if not self.__valid__(arg):
             raise ValueError("In__valid__ argument, try again!")
-        self.args.append(arg)
-        if len(self.args) == len(self.arg_names):
+        self.__args__.append(arg)
+        if len(self.__args__) == len(self.__arg_names__):
             self.__parse_save__()
-            self.args = []
+            self.__args__ = []
             return 
     
     def export_list(self, file_path):
-        self.table.save_as(file_path)
+        self.__table__.save_as(file_path)
         
     def get_list_name(self) -> str:
-        return self.table.table_name
+        return self.__table__.table_name
     
     def get_table_df(self) -> pd.DataFrame:
-        return self.table
+        return self.__table__
+    
+    def get_column_names(self):
+        return self.__table_col_names__
 
     def fetch_curr_arg_name(self):
-        return self.arg_names[len(self.args)]
+        return self.__arg_names__[len(self.__args__)]
 
     def __parse_save__(self):
-        self.table.update(self.args)
+        self.__table__.update(self.__args__)
 
     def __valid__(self, arg):
         return len(arg) == 1
@@ -72,9 +74,9 @@ class WireList(DitmcoList):
 
     def __init__(self):
         super().__init__()
-        self.arg_names = ["'FROM' (space) 'PIN LEFT'", "'TO'  (space) 'PIN RIGHT'"]
-        self.table_col_names = ["FROM", "PIN LEFT", "TO", "PIN RIGHT"]
-        self.table = ConnectionTable(self.table_col_names, "Wire List") 
+        self.__arg_names__ = ["'FROM' (space) 'PIN LEFT'", "'TO'  (space) 'PIN RIGHT'"]
+        self.__table_col_names__ = ["FROM", "PIN LEFT", "TO", "PIN RIGHT"]
+        self.__table__ = ConnectionTable(self.__table_col_names__, "Wire List") 
 
     def __valid__(self, arg):
         args = arg.split(" ")
@@ -88,18 +90,18 @@ class WireList(DitmcoList):
         
     def __parse_save__(self):
         parsed_values = []
-        for arg in self.args:
+        for arg in self.__args__:
             parsed_values += arg.split(" ")
-        self.table.update(parsed_values)
+        self.__table__.update(parsed_values)
         
 
 class IsolatedList(DitmcoList):
 
     def __init__(self):
         super().__init__()
-        self.arg_names = ["'REF DES' (space) 'PIN'"]
-        self.table_col_names = ["'REF DES'", "'PIN'"]
-        self.table = ConnectionTable(self.table_col_names, "'Unused Pin List'")
+        self.__arg_names__ = ["'REF DES' (space) 'PIN'"]
+        self.__table_col_names__ = ["'REF DES'", "'PIN'"]
+        self.__table__ = ConnectionTable(self.__table_col_names__, "'Unused Pin List'")
 
     def __valid__(self, arg):
         args = arg.split(" ")
@@ -112,13 +114,13 @@ class IsolatedList(DitmcoList):
         return True
     
     def __parse_save__(self):
-        self.table.update(self.args[0].split(" "))
+        self.__table__.update(self.__args__[0].split(" "))
 
 class GroundList(DitmcoList):
 
     def __init__(self):
         super().__init__()
-        self.arg_names = ["'Connector", "'Ground'"] 
-        self.table_col_names = ["'Connector", "'Ground'"]
-        self.table = ConnectionTable(self.table_col_names, "'Ground Connection List'")
+        self.__arg_names__ = ["'Connector", "'Ground'"] 
+        self.__table_col_names__ = ["'Connector", "'Ground'"]
+        self.__table__ = ConnectionTable(self.__table_col_names__, "'Ground Connection List'")
     
