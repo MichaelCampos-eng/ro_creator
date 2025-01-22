@@ -1,6 +1,6 @@
 import pandas as pd
-from config_classes.config import Config
-from converter.list_test import *
+from ..config_classes.config import Config
+from ..converter.list_test import *
 from typing import List
 
 class DitmcoTests:
