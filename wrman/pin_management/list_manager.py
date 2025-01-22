@@ -1,4 +1,4 @@
-from pin_management.table import ConnectionTable
+from ..pin_management.table import ConnectionTable
 import os
 import sys
 import pandas as pd

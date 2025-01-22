@@ -1,4 +1,4 @@
-from converter.ro_tests import *
+from ..converter.ro_tests import *
 import pandas as pd
 from typing import List
 

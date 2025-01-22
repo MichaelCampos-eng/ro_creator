@@ -1,7 +1,7 @@
 import pandas as pd
 import natsort as ns
 
-from config_classes.config import *
+from ..config_classes.config import *
 
 class BaseRoTest:
 
