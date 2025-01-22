@@ -5,7 +5,7 @@ import pandas as pd
 
 class DitmcoList():
 
-    def __init__(self, file_path: str):
+    def __init__(self):
         self.file_path = file_path
         self.args = []
         self.arg_names = []
@@ -17,14 +17,14 @@ class DitmcoList():
         self.table.open(csv_path)
         self.args = []
 
-    def begin_cli(self):
+    def begin_cli(self, file_path):
         self.clear()
         while True:
             arg = input(f"Enter {self.fetch_curr_arg_name()}: ")
             try: 
                 if self.__is_quit__(arg):
                     self.clear()
-                    self.table.save_as()
+                    self.table.save_as(file_path=file_path)
                     sys.exit()
                 self.step(arg)
                 self.clear()
@@ -43,6 +43,9 @@ class DitmcoList():
             self.__parse_save__()
             self.args = []
             return 
+    
+    def export_list(self, file_path):
+        self.table.save_as(file_path)
         
     def get_list_name(self) -> str:
         return self.table.table_name
@@ -67,11 +70,11 @@ class DitmcoList():
 
 class WireList(DitmcoList):
 
-    def __init__(self, file_path: str):
-        super().__init__(file_path)
+    def __init__(self):
+        super().__init__()
         self.arg_names = ["'FROM' (space) 'PIN LEFT'", "'TO'  (space) 'PIN RIGHT'"]
         self.table_col_names = ["FROM", "PIN LEFT", "TO", "PIN RIGHT"]
-        self.table = ConnectionTable(self.table_col_names, file_path, "Wire List") 
+        self.table = ConnectionTable(self.table_col_names, "Wire List") 
 
     def __valid__(self, arg):
         args = arg.split(" ")
@@ -92,11 +95,11 @@ class WireList(DitmcoList):
 
 class IsolatedList(DitmcoList):
 
-    def __init__(self, file_path: str):
-        super().__init__(file_path)
+    def __init__(self):
+        super().__init__()
         self.arg_names = ["'REF DES' (space) 'PIN'"]
         self.table_col_names = ["'REF DES'", "'PIN'"]
-        self.table = ConnectionTable(self.table_col_names, file_path, "'Unused Pin List'")
+        self.table = ConnectionTable(self.table_col_names, "'Unused Pin List'")
 
     def __valid__(self, arg):
         args = arg.split(" ")
@@ -113,9 +116,9 @@ class IsolatedList(DitmcoList):
 
 class GroundList(DitmcoList):
 
-    def __init__(self, file_path: str):
-        super().__init__(file_path)
+    def __init__(self):
+        super().__init__()
         self.arg_names = ["'Connector", "'Ground'"] 
         self.table_col_names = ["'Connector", "'Ground'"]
-        self.table = ConnectionTable(self.table_col_names, file_path, "'Ground Connection List'")
+        self.table = ConnectionTable(self.table_col_names, "'Ground Connection List'")
     

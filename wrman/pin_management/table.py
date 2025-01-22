@@ -3,18 +3,17 @@ import random as rd
 
 class ConnectionTable:
     
-    def __init__(self, column_names, file_path, table_name):
-        self.file_path = file_path
+    def __init__(self, column_names, table_name):
         self.table_name = table_name
         self.df = pd.DataFrame(columns=column_names)
 
     def open(self, csv_path):
         self.df = pd.read_csv(csv_path)
 
-    def save_as(self):
+    def save_as(self, file_path):
         table_name = self.table_name.replace(" ", "_").lower()
         serial_num = ''.join([str(rd.randint(0, 9)) for _ in range(5)])
-        file_full_name = f"{self.file_path}/{table_name}_{serial_num}.csv"
+        file_full_name = f"{file_path}/{table_name}_{serial_num}.csv"
         print(f"\nSaving dataframe as {file_full_name}...")
         self.df.to_csv(file_full_name, index=False)
         print("Saved!\n")
