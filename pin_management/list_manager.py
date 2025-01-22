@@ -43,6 +43,12 @@ class DitmcoList():
             self.__parse_save__()
             self.args = []
             return 
+        
+    def get_list_name(self) -> str:
+        return self.table.table_name
+    
+    def get_table_df(self) -> pd.DataFrame:
+        return self.table
 
     def fetch_curr_arg_name(self):
         return self.arg_names[len(self.args)]
