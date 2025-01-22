@@ -1,11 +1,12 @@
-from setuptools import setup
+from setuptools import setup, find_packages
   
 setup( 
     name='wrman', 
-    version='1.0', 
+    version='0.1', 
     description='Maps wiring connections', 
     author='Michael Campos', 
     author_email='michael_c55@berkeley.edu', 
+    packages=find_packages(include=['manager']), 
     install_requires=[ 
         'hydra-core', 
         'pandas',
