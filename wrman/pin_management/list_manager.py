@@ -64,6 +64,8 @@ class DitmcoList():
         self.__table__.update(self.__args__)
 
     def __valid__(self, arg):
+        if arg.isspace():
+            return False
         args = arg.split(" ")
         return len(args) == 1
     
