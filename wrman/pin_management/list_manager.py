@@ -36,7 +36,7 @@ class DitmcoList():
             self.__table__.remove_entry(arg)
             return
         if not self.__valid__(arg):
-            raise ValueError("In__valid__ argument, try again!")
+            raise ValueError("Invalid argument, try again!")
         self.__args__.append(arg)
         if len(self.__args__) == len(self.__arg_names__):
             self.__parse_save__()
@@ -120,7 +120,7 @@ class GroundList(DitmcoList):
 
     def __init__(self):
         super().__init__()
-        self.__arg_names__ = ["'Connector", "'Ground'"] 
+        self.__arg_names__ = ["'Connector'", "'Ground'"] 
         self.__table_col_names__ = ["Connector", "Ground"]
         self.__table__ = ConnectionTable(self.__table_col_names__, "Ground Connection List")
     
