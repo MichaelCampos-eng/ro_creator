@@ -29,7 +29,6 @@ class ConnectionTable:
             index = int(command.split(" ")[1])
             self.df.drop(index, inplace=True)
             self.df.reset_index(drop=True, inplace=True)
-            self.display()
             print(f"Entry at index {index} removed\n")
         except Exception as e:
             print(f"Invalid index: {command[1]}")
