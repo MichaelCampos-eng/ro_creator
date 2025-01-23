@@ -6,7 +6,7 @@ class ConnectionTable:
     def __init__(self, column_names, table_name):
         self.table_name = table_name
         self.df = pd.DataFrame(columns=column_names)
-        self.__result_str__ = ""
+        self.__result_str__ = None
 
     def open(self, csv_path):
         self.df = pd.read_csv(csv_path)
@@ -19,9 +19,10 @@ class ConnectionTable:
         self.__result_str__ = f"Saved dataframe as {file_full_name}!\n"
 
     def display(self):
-        print("\n======================")
-        print(self.__result_str__)
-        print("======================\n")
+        if self.__result_str__:
+            print("\n======================")
+            print(self.__result_str__)
+            print("======================\n")
 
     def remove_entry(self, command: str):
         try: 

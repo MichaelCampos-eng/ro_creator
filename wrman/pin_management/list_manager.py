@@ -62,7 +62,8 @@ class DitmcoList():
         self.__table__.update(self.__args__)
 
     def __valid__(self, arg):
-        return len(arg) == 1
+        args = arg.split(" ")
+        return len(args) == 1
     
     def __is_remove__(self, command: str):
         return command.split(" ")[0] == "remove"
@@ -122,5 +123,5 @@ class GroundList(DitmcoList):
         super().__init__()
         self.__arg_names__ = ["'Connector'", "'Ground'"] 
         self.__table_col_names__ = ["Connector", "Ground"]
-        self.__table__ = ConnectionTable(self.__table_col_names__, "Ground Connection List")
+        self.__table__ = ConnectionTable(self.__table_col_names__, "Ground List")
     
