@@ -29,7 +29,7 @@ class ConnectionTable:
             index = int(command.split(" ")[1])
             self.df.drop(index, inplace=True)
             self.df.reset_index(drop=True, inplace=True)
-            self.__result_str__ = "Entry at index {index} removed\n"
+            self.__result_str__ = f"{self.table_name}\n{self.df} \n" + f"Entry at index {index} removed\n"
         except Exception as e:
             raise ValueError(f"Invalid index: {command.split(' ')[1]}") from e
 

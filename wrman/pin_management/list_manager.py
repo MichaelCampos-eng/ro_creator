@@ -35,6 +35,7 @@ class DitmcoList():
         if self.__is_remove__(arg):
             try: 
                 self.__table__.remove_entry(arg)
+                return
             except Exception as e:
                 raise e
         if not self.__valid__(arg):
@@ -64,11 +65,15 @@ class DitmcoList():
         self.__table__.update(self.__args__)
 
     def __valid__(self, arg):
-        if arg.isspace() or arg == "":
-            return False
         args = arg.split(" ")
-        return len(args) == 1
-    
+        if arg.isspace():
+            return False
+        if len(args) != 2:
+            return False
+        if args[0] == '' or args[1] == '':
+            return False
+        return True
+        
     def __is_remove__(self, command: str):
         return command.split(" ")[0] == "remove"
     
@@ -82,16 +87,6 @@ class WireList(DitmcoList):
         self.__arg_names__ = ["'FROM' (space) 'PIN LEFT'", "'TO'  (space) 'PIN RIGHT'"]
         self.__table_col_names__ = ["FROM", "PIN LEFT", "TO", "PIN RIGHT"]
         self.__table__ = ConnectionTable(self.__table_col_names__, "Wire List") 
-
-    def __valid__(self, arg):
-        args = arg.split(" ")
-        if arg.isspace():
-            return False
-        if len(args) != 2:
-            return False
-        if args[0] == '' or args[1] == '':
-            return False
-        return True
         
     def __parse_save__(self):
         parsed_values = []
@@ -107,16 +102,6 @@ class IsolatedList(DitmcoList):
         self.__arg_names__ = ["'REF DES' (space) 'PIN'"]
         self.__table_col_names__ = ["REF DES", "PIN"]
         self.__table__ = ConnectionTable(self.__table_col_names__, "Unused Pin List")
-
-    def __valid__(self, arg):
-        args = arg.split(" ")
-        if arg.isspace():
-            return False
-        if len(args) != 2:
-            return False
-        if args[0] == '' or args[1] == '':
-            return False
-        return True
     
     def __parse_save__(self):
         self.__table__.update(self.__args__[0].split(" "))
@@ -128,4 +113,12 @@ class GroundList(DitmcoList):
         self.__arg_names__ = ["'Connector'", "'Ground'"] 
         self.__table_col_names__ = ["Connector", "Ground"]
         self.__table__ = ConnectionTable(self.__table_col_names__, "Ground List")
+    
+    def __valid__(self, arg):
+        if self.__is_remove__(arg):
+            return True
+        if arg.isspace() or arg == "":
+            return False
+        args = arg.split(" ")
+        return len(args) == 1
     
