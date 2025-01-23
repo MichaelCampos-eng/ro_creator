@@ -50,7 +50,7 @@ class DitmcoList():
         return self.__table__.table_name
     
     def get_table_df(self) -> pd.DataFrame:
-        return self.__table__
+        return self.__table__.df
     
     def get_column_names(self):
         return self.__table_col_names__
