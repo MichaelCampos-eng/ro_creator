@@ -33,8 +33,10 @@ class DitmcoList():
 
     def step(self, arg):
         if self.__is_remove__(arg):
-            self.__table__.remove_entry(arg)
-            return
+            try: 
+                self.__table__.remove_entry(arg)
+            except Exception as e:
+                raise e
         if not self.__valid__(arg):
             raise ValueError("Invalid argument, try again!")
         self.__args__.append(arg)

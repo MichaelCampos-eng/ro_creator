@@ -31,7 +31,7 @@ class ConnectionTable:
             self.df.reset_index(drop=True, inplace=True)
             self.__result_str__ = "Entry at index {index} removed\n"
         except Exception as e:
-            print(f"Invalid index: {command[1]}")
+            raise ValueError(f"Invalid index: {command.split(' ')[1]}") from e
 
     def update(self, values):
         new_entry = pd.DataFrame({self.df.columns[i]: [values[i].replace(" ", "")] for i in range(len(self.df.columns))})
