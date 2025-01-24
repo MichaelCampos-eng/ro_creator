@@ -86,10 +86,8 @@ class IsolationTest(BaseRoTest):
         return "\nT-" + str(row["Connector"]) + "-" + str(row["Pin"]) + "\n"
 
     def __convert__(self, df: pd.DataFrame) -> pd.DataFrame:
-        left = df[['FROM', 'PIN LEFT']].rename(columns={'FROM': "Connector", "PIN LEFT": "Pin"})
-        right = df[['TO', 'PIN RIGHT']].rename(columns={'TO': "Connector", "PIN RIGHT": "Pin"})
-        connectors = pd.concat([left, right], ignore_index=True).drop_duplicates(subset=['Connector', 'Pin'])
-        column_name = "hipot"
+        column_name = "isolation"
+        connectors = df.rename(columns={"REF DES":"Connector", "PIN":"Pin"})
         sorted_con_pin = ns.natsorted(connectors.apply(self.__to_input__, axis=1))
         return pd.DataFrame({column_name: sorted_con_pin})
 
@@ -97,7 +95,7 @@ class IsolationTest(BaseRoTest):
         hipot_df = self.__convert__(df)
         header = f"BTB, {block_name}\n" + params + "\n"
         footer = f"ETB, {block_name}\n"
-        return header + hipot_df["hipot"].aggregate("sum", axis=0) + footer
+        return header + hipot_df["isolation"].aggregate("sum", axis=0) + footer
 
 class LeakageTest(BaseRoTest):
 
