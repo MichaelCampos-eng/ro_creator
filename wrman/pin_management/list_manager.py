@@ -52,7 +52,7 @@ class DitmcoList():
     def get_list_name(self) -> str:
         return self.__table__.table_name
     
-    def get_table_df(self) -> pd.DataFrame:
+    def get_df(self) -> pd.DataFrame:
         return self.__table__.df
     
     def get_column_names(self):
