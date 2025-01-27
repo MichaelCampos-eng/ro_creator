@@ -14,7 +14,7 @@ class BaseListTest():
         pass
 
     def execute(self) -> str:
-        if self.df:
+        if not self.df is None:
             return f"; {self.header}\n" + "".join([test.convert_to_test(self.df) for test in self.tests])
         return ""
     
