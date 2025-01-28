@@ -32,7 +32,7 @@ class ContinuityTest(BaseRoTest):
     
     def __to_input_group__(self, group) -> pd.Series:
         if len(group) > 1:
-            sorted_cont_pts = pd.Series(ns.natsorted(group.apply(self.to_multiple_continuity, axis=1)))
+            sorted_cont_pts = pd.Series(ns.natsorted(group.apply(self.__to_multiple_continuity__, axis=1)))
             sorted_cont_pts.iloc[-1] = sorted_cont_pts.iloc[-1].replace("CV-", "C-")
             return pd.Series(sorted_cont_pts.agg("sum"))
         return group.apply(self.__to_input__, axis=1).reset_index(drop=True)
