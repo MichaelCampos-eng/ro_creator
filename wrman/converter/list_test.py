@@ -48,6 +48,7 @@ class GroundListTest(BaseListTest):
 
     def __init__(self, df: pd.DataFrame, cfg: Config):
         super().__init__(df, cfg)
+        self.__format_df__()
         self.setup_tests()
     
     def setup_tests(self) -> None:
