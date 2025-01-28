@@ -5,8 +5,8 @@ from ..config_classes.config import *
 
 class BaseRoTest:
 
-    def __init__(self, conf: TestConfig):
-        self.conf = conf
+    def __init__(self, cfg: TestConfig):
+        self.cfg:TestConfig = cfg
 
     def __to_input__(self, row) -> str:
         pass
@@ -50,8 +50,8 @@ class ContinuityTest(BaseRoTest):
 
     def convert_to_test(self, df: pd.DataFrame) -> str:
         cont_df = self.__convert__(df)
-        header = f"BTB, {self.block_name}\n" + self.params + "\n"
-        footer = f"\nETB, {self.block_name}\n"
+        header = f"BTB, {self.cfg.block_name}\n" + self.cfg.param + "\n"
+        footer = f"\nETB, {self.cfg.block_name}\n"
         return header + cont_df["continuity"].aggregate("sum", axis=0) + footer
     
 class HipotTest(BaseRoTest):
@@ -70,10 +70,10 @@ class HipotTest(BaseRoTest):
         sorted_con_pin = ns.natsorted(connectors.apply(self.__to_input__, axis=1))
         return pd.DataFrame({column_name: sorted_con_pin})
 
-    def convert_to_test(self, df: pd.DataFrame, block_name: str, params: str) -> str:
+    def convert_to_test(self, df) -> str:
         hipot_df = self.__convert__(df)
-        header = f"BTB, {block_name}\n" + params + "\n"
-        footer = f"ETB, {block_name}\n"
+        header = f"BTB, {self.cfg.block_name}\n" + self.cfg.param + "\n"
+        footer = f"ETB, {self.cfg.block_name}\n"
         return header + hipot_df["hipot"].aggregate("sum", axis=0) + footer
 
 # TODO: Df for isolation would only be connector and pin columns
@@ -91,10 +91,10 @@ class IsolationTest(BaseRoTest):
         sorted_con_pin = ns.natsorted(connectors.apply(self.__to_input__, axis=1))
         return pd.DataFrame({column_name: sorted_con_pin})
 
-    def convert_to_test(self, df: pd.DataFrame, block_name: str, params: str) -> str:
+    def convert_to_test(self, df: pd.DataFrame) -> str:
         hipot_df = self.__convert__(df)
-        header = f"BTB, {block_name}\n" + params + "\n"
-        footer = f"ETB, {block_name}\n"
+        header = f"BTB, {self.cfg.block_name}\n" + self.cfg.param + "\n"
+        footer = f"ETB, {self.cfg.block_name}\n"
         return header + hipot_df["isolation"].aggregate("sum", axis=0) + footer
 
 class LeakageTest(BaseRoTest):
@@ -113,8 +113,8 @@ class LeakageTest(BaseRoTest):
         sorted_con_pin = ns.natsorted(connectors.apply(self.__to_input__, axis=1))
         return pd.DataFrame({column_name: sorted_con_pin})
 
-    def convert_to_test(self, df: pd.DataFrame, block_name: str, params: str) -> str:
+    def convert_to_test(self, df: pd.DataFrame) -> str:
         leakage_df = self.__convert__(df)
-        header = f"BTB, {block_name}\n" + params + "\n"
-        footer = f"ETB, {block_name}\n"
+        header = f"BTB, {self.cfg.block_name}\n" + self.cfg.param + "\n"
+        footer = f"ETB, {self.cfg.block_name}\n"
         return header + leakage_df["hipot"].aggregate("sum", axis=0) + footer
