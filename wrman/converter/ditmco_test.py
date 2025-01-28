@@ -56,6 +56,5 @@ class GroundListRo(DitmcoRo):
 
     def __init__(self, cfg: Config, ground_list: pd.DataFrame):
         self.cfg = cfg
-        self.test = GroundListRo(ground_list, cfg)
+        self.test = GroundListTest(ground_list, cfg)
         self.error_str = "Ground list is empty."
-        
