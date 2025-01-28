@@ -58,6 +58,8 @@ class GroundListTest(BaseListTest):
         
     def __format_df__(self):
         grds = self.df["Ground"]
-        self.df = pd.DataFrame({'FROM': grds[:-1].values, 'TO': grds[1:].values})
+        first_element = grds[0]
+        pairs = [[first_element, item] for item in grds[1:]]
+        self.df = pd.DataFrame(pairs, columns=['FROM', 'TO'])
         self.df["PIN LEFT"] = ""
         self.df["PIN RIGHT"] = ""
