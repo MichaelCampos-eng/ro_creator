@@ -57,7 +57,7 @@ class GroundListTest(BaseListTest):
             self.tests.append(ContinuityTest(self.cfg.continuity_cfg))
         
     def __format_df__(self):
-        grds = self.df["ground"]
+        grds = self.df["Ground"]
         self.df = pd.DataFrame({'FROM': grds[:-1].values, 'TO': grds[1:].values})
         self.df["PIN LEFT"] = ""
         self.df["PIN RIGHT"] = ""
