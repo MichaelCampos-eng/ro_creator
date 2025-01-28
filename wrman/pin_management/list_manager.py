@@ -1,4 +1,5 @@
 from ..pin_management.table import ConnectionTable
+from ..converter.labels import *
 import os
 import sys
 import pandas as pd
@@ -46,7 +47,10 @@ class DitmcoList():
             self.__args__ = []
             return 
     
-    def export_list(self, file_path):
+    def load_list(self, file_path):
+        self.__table__.open(file_path)
+
+    def save_list(self, file_path):
         self.__table__.save_as(file_path)
         
     def get_list_name(self) -> str:
@@ -85,7 +89,7 @@ class WireList(DitmcoList):
     def __init__(self):
         super().__init__()
         self.__arg_names__ = ["'FROM' (space) 'PIN LEFT'", "'TO'  (space) 'PIN RIGHT'"]
-        self.__table_col_names__ = ["FROM", "PIN LEFT", "TO", "PIN RIGHT"]
+        self.__table_col_names__ = [WL.FROM, WL.PIN_LEFT, WL.TO, WL.PIN_RIGHT]
         self.__table__ = ConnectionTable(self.__table_col_names__, "Wire List") 
         
     def __parse_save__(self):
@@ -100,7 +104,7 @@ class IsolatedList(DitmcoList):
     def __init__(self):
         super().__init__()
         self.__arg_names__ = ["'REF DES' (space) 'PIN'"]
-        self.__table_col_names__ = ["REF DES", "PIN"]
+        self.__table_col_names__ = [CL.CONNECTOR, CL.PIN]
         self.__table__ = ConnectionTable(self.__table_col_names__, "Unused Pin List")
     
     def __parse_save__(self):
@@ -111,7 +115,7 @@ class GroundList(DitmcoList):
     def __init__(self):
         super().__init__()
         self.__arg_names__ = ["'Connector'", "'Ground'"] 
-        self.__table_col_names__ = ["Connector", "Ground"]
+        self.__table_col_names__ = [CL.CONNECTOR, CL.PIN]
         self.__table__ = ConnectionTable(self.__table_col_names__, "Ground List")
     
     def __valid__(self, arg):

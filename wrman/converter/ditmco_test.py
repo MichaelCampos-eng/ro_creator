@@ -25,14 +25,14 @@ class AggregateRo(DitmcoRo):
     def __init__(self, cfg, wire_df = None, isolated_df = None, ground_df = None):
         super().__init__(cfg)
         self.error = "Empty lists."
-        self.wire_list = WireListTest(wire_df)
-        self.isolated_ro = UnusedListTest(isolated_df)
-        self.ground_ro = GroundListTest(ground_df)
+        self.wire_list = WireListTest(wire_df, cfg)
+        self.isolated_ro = UnusedListTest(isolated_df, cfg)
+        self.ground_ro = GroundListTest(ground_df, cfg)
 
     def export_test(self):
-        ro_str = self.wire_list if self.wire_list else ""
-        ro_str += self.isolated_ro if self.isolated_ro else ""
-        ro_str += self.ground_ro if self.ground_ro else ""
+        ro_str = self.wire_list.execute() if self.wire_list else ""
+        ro_str += self.isolated_ro.execute() if self.isolated_ro else ""
+        ro_str += self.ground_ro.execute() if self.ground_ro else ""
         if ro_str != "":
             self.__export_file__(ro_str)
         else:
