@@ -49,7 +49,7 @@ class ContinuityTest(BaseRoTest):
         return cont_df
 
     def convert_to_test(self, df: pd.DataFrame) -> str:
-        cont_df = self, self.convert_continuity(df)
+        cont_df = self.__convert__(df)
         header = f"BTB, {self.block_name}\n" + self.params + "\n"
         footer = f"\nETB, {self.block_name}\n"
         return header + cont_df["continuity"].aggregate("sum", axis=0) + footer
