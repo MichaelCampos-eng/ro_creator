@@ -117,4 +117,4 @@ class LeakageTest(BaseRoTest):
         leakage_df = self.__convert__(df)
         header = f"BTB, {self.cfg.block_name}\n" + self.cfg.params + "\n"
         footer = f"ETB, {self.cfg.block_name}\n"
-        return header + leakage_df["hipot"].aggregate("sum", axis=0) + footer
+        return header + leakage_df["leakage"].aggregate("sum", axis=0) + footer
