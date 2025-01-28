@@ -54,3 +54,9 @@ class GroundListTest(BaseListTest):
         self.header = "Ground Tests"
         if self.cfg.continuity_cfg.execute:
             self.tests.append(ContinuityTest(self.cfg.continuity_cfg))
+        
+    def __format_df__(self):
+        grds = self.df["ground"]
+        self.df = pd.DataFrame({'FROM': grds[:-1].values, 'TO': grds[1:].values})
+        self.df["PIN LEFT"] = ""
+        self.df["PIN RIGHT"] = ""
