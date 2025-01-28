@@ -50,7 +50,7 @@ class ContinuityTest(BaseRoTest):
 
     def convert_to_test(self, df: pd.DataFrame) -> str:
         cont_df = self.__convert__(df)
-        header = f"BTB, {self.cfg.block_name}\n" + self.cfg.param + "\n"
+        header = f"BTB, {self.cfg.block_name}\n" + self.cfg.params + "\n"
         footer = f"\nETB, {self.cfg.block_name}\n"
         return header + cont_df["continuity"].aggregate("sum", axis=0) + footer
     
@@ -72,7 +72,7 @@ class HipotTest(BaseRoTest):
 
     def convert_to_test(self, df) -> str:
         hipot_df = self.__convert__(df)
-        header = f"BTB, {self.cfg.block_name}\n" + self.cfg.param + "\n"
+        header = f"BTB, {self.cfg.block_name}\n" + self.cfg.params + "\n"
         footer = f"ETB, {self.cfg.block_name}\n"
         return header + hipot_df["hipot"].aggregate("sum", axis=0) + footer
 
@@ -93,7 +93,7 @@ class IsolationTest(BaseRoTest):
 
     def convert_to_test(self, df: pd.DataFrame) -> str:
         hipot_df = self.__convert__(df)
-        header = f"BTB, {self.cfg.block_name}\n" + self.cfg.param + "\n"
+        header = f"BTB, {self.cfg.block_name}\n" + self.cfg.params + "\n"
         footer = f"ETB, {self.cfg.block_name}\n"
         return header + hipot_df["isolation"].aggregate("sum", axis=0) + footer
 
@@ -115,6 +115,6 @@ class LeakageTest(BaseRoTest):
 
     def convert_to_test(self, df: pd.DataFrame) -> str:
         leakage_df = self.__convert__(df)
-        header = f"BTB, {self.cfg.block_name}\n" + self.cfg.param + "\n"
+        header = f"BTB, {self.cfg.block_name}\n" + self.cfg.params + "\n"
         footer = f"ETB, {self.cfg.block_name}\n"
         return header + leakage_df["hipot"].aggregate("sum", axis=0) + footer
