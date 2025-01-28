@@ -10,12 +10,13 @@ class DitmcoRo:
         self.error_str = None
     
     def export_test(self):
-        ro_str = self.test.execute()
-        self.__export_file__(ro_str)
+        try:
+            ro_str = self.test.execute()
+            self.__export_file__(ro_str)
+        except:
+            raise ValueError(self.error_str)
     
     def __export_file__(self, txt):
-        if txt != "":
-            raise ValueError(self.error_str)
         with open(self.cfg.results_path, 'w') as file:
             file.write(txt)
 
@@ -32,7 +33,10 @@ class AggregateRo(DitmcoRo):
         ro_str = self.wire_list if self.wire_list else ""
         ro_str += self.isolated_ro if self.isolated_ro else ""
         ro_str += self.ground_ro if self.ground_ro else ""
-        self.__export_file__(ro_str)
+        if ro_str != "":
+            self.__export_file__(ro_str)
+        else:
+            raise ValueError(self.error_str)
         
 class WireListRo(DitmcoRo):
 
@@ -54,3 +58,4 @@ class GroundListRo(DitmcoRo):
         self.cfg = cfg
         self.test = GroundListRo(ground_list, cfg)
         self.error_str = "Ground list is empty."
+        
