@@ -22,7 +22,7 @@ class ContinuityTest(BaseRoTest):
     def __init__(self, conf: TestConfig):
         super().__init__(conf)
 
-    def __to_output__(row) -> str:
+    def __to_output__(self, row) -> str:
         pin = "-" + str(row["PIN LEFT"]) + "\n" if row["PIN LEFT"] != "" else "\n"
         return "\nX-" + str(row["FROM"]) + pin
 
