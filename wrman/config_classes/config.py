@@ -9,7 +9,7 @@ class TestConfig:
 
     execute: True
     block_name: str
-    param: str
+    params: str
 
 @dataclass
 class Config:
@@ -19,7 +19,7 @@ class Config:
                 setattr(self, key, TestConfig(**value))  # Convert dict to OK object
             else:
                 setattr(self, key, value)
-                
+
     results_path: str
     continuity_cfg: TestConfig
     leakage_cfg: TestConfig

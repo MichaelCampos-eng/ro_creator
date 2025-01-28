@@ -76,7 +76,6 @@ class HipotTest(BaseRoTest):
         footer = f"ETB, {self.cfg.block_name}\n"
         return header + hipot_df["hipot"].aggregate("sum", axis=0) + footer
 
-# TODO: Df for isolation would only be connector and pin columns
 class IsolationTest(BaseRoTest):
 
     def __init__(self, conf: TestConfig):
@@ -87,15 +86,15 @@ class IsolationTest(BaseRoTest):
 
     def __convert__(self, df: pd.DataFrame) -> pd.DataFrame:
         column_name = "isolation"
-        connectors = df.rename(columns={"REF DES":"Connector", "PIN":"Pin"})
+        connectors = df.rename(columns={"REF DES": "Connector", "PIN": "Pin"})
         sorted_con_pin = ns.natsorted(connectors.apply(self.__to_input__, axis=1))
         return pd.DataFrame({column_name: sorted_con_pin})
 
     def convert_to_test(self, df: pd.DataFrame) -> str:
-        hipot_df = self.__convert__(df)
+        iso_df = self.__convert__(df)
         header = f"BTB, {self.cfg.block_name}\n" + self.cfg.params + "\n"
         footer = f"ETB, {self.cfg.block_name}\n"
-        return header + hipot_df["isolation"].aggregate("sum", axis=0) + footer
+        return header + iso_df["isolation"].aggregate("sum", axis=0) + footer
 
 class LeakageTest(BaseRoTest):
 
