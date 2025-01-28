@@ -43,9 +43,7 @@ class ContinuityTest(BaseRoTest):
 
     def __convert__(self, df: pd.DataFrame) -> pd.DataFrame:
         cont_df = df.copy()
-        ok =  cont_df.apply(self.__to_output__, axis=1)
-        print(ok)
-        cont_df["output"] = ok
+        cont_df["output"] = cont_df.apply(self.__to_output__, axis=1)
         cont_df = cont_df.groupby("output").apply(self.__to_input_group__, include_groups=False).reset_index().rename(columns={0:"input"})
         cont_df["continuity"] = pd.Series(ns.natsorted(cont_df.apply("sum", axis=1)))
         return cont_df
