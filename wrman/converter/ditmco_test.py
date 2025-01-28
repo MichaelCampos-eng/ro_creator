@@ -13,8 +13,8 @@ class DitmcoRo:
         try:
             ro_str = self.test.execute()
             self.__export_file__(ro_str)
-        except:
-            raise ValueError(self.error_str)
+        except ValueError as e:
+            raise ValueError(e)
     
     def __export_file__(self, txt):
         with open(self.cfg.results_path, 'w') as file:
