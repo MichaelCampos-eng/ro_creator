@@ -14,9 +14,9 @@ class BaseListTest():
         pass
 
     def execute(self) -> str:
-        if not self.df is None:
+        if not self.df.empty:
             return f"; {self.header}\n" + "".join([test.convert_to_test(self.df) for test in self.tests])
-        return ""
+        raise ValueError("Dataframe is empty.")
     
 class WireListTest(BaseListTest):
 
