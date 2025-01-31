@@ -11,7 +11,7 @@ FROM = WL.FROM.value
 TO = WL.TO.value
 CONNECTOR = CL.CONNECTOR.value
 PIN = CL.PIN.value
-GROUND = CL.GROUND
+GROUND = CL.GROUND.value
 
 class DitmcoList():
     """
