@@ -7,6 +7,7 @@ PIN_LEFT = WL.PIN_LEFT.value
 PIN_RIGHT = WL.PIN_RIGHT.value
 FROM = WL.FROM.value
 TO = WL.TO.value
+GROUND = CL.GROUND
 
 class BaseListTest():
 
@@ -87,7 +88,9 @@ class GroundListTest(BaseListTest):
             self.tests.append(ContinuityTest(self.cfg.continuity_cfg))
         
     def __format_df__(self):
-        grds = self.df["Ground"]
+        grds = self.df[GROUND]
+        if len(grds.index) <= 1:
+            raise ValueError("There must be at least 2 ground connectors for continuity test.")
         first_element = grds[0]
         pairs = [[first_element, item] for item in grds[1:]]
         self.df = pd.DataFrame(pairs, columns=[FROM, TO])
