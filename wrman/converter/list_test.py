@@ -7,7 +7,7 @@ PIN_LEFT = WL.PIN_LEFT.value
 PIN_RIGHT = WL.PIN_RIGHT.value
 FROM = WL.FROM.value
 TO = WL.TO.value
-GROUND = CL.GROUND
+GROUND = CL.GROUND.value
 
 class BaseListTest():
 
