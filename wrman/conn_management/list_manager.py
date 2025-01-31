@@ -11,6 +11,7 @@ FROM = WL.FROM.value
 TO = WL.TO.value
 CONNECTOR = CL.CONNECTOR.value
 PIN = CL.PIN.value
+GROUND = CL.GROUND
 
 class DitmcoList():
     """
@@ -186,7 +187,7 @@ class GroundList(DitmcoList):
     def __init__(self):
         super().__init__()
         self.__hint_txts__ = ["'Connector'", "'Ground'"] 
-        self.__table_col_names__ = [CONNECTOR, PIN]
+        self.__table_col_names__ = [CONNECTOR, GROUND]
         self.__table__ = ConnectionTable(self.__table_col_names__, "Ground List")
     
     def __valid__(self, arg) -> bool:

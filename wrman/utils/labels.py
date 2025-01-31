@@ -9,4 +9,4 @@ class WL(Enum):
 class CL(Enum):
     CONNECTOR = "Connector"
     PIN = "Pin"
-    
+    GROUND = "Ground"
