@@ -29,7 +29,6 @@ class DitmcoRo:
     def __init__(self, cfg: Config, ditmco_list: pd.DataFrame = None):
         self.__cfg__ = cfg
         self.__test__ = BaseListTest(ditmco_list, cfg)
-        self.__error_str__ = None
     
     def export_test(self):
         try:
@@ -65,18 +64,16 @@ class WireListRo(DitmcoRo):
     def __init__(self, cfg: Config, wire_list: pd.DataFrame):
         self.__cfg__ = cfg
         self.__test__ = WireListTest(wire_list, cfg)
-        self.__error_str__ = "Wire list is empty."
 
 class UnusedListRo(DitmcoRo):
 
     def __init__(self, cfg: Config, isolated_list: pd.DataFrame):
         self.__cfg__ = cfg
         self.__test__ = UnusedListTest(isolated_list, cfg)
-        self.__error_str__ = "Wire list is empty."
 
 class GroundListRo(DitmcoRo):
 
     def __init__(self, cfg: Config, ground_list: pd.DataFrame):
         self.__cfg__ = cfg
         self.__test__ = GroundListTest(ground_list, cfg)
-        self.__error_str__ = "Ground list is empty."
+        

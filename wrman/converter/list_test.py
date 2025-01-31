@@ -26,6 +26,9 @@ class BaseListTest():
         list of tests to be executed such as ContinuityTest, LeakageTest, etc.
     header : str
         name for the list that is going to be tested
+    __error_str__ : str
+        str set and used whenever df is invalid for test execution
+        
     Methods
     -------
     setup_tests()
@@ -40,15 +43,23 @@ class BaseListTest():
         self.cfg = cfg
         self.tests: List[BaseRoTest] = []
         self.header = ""
+        self.__error_str__ = None
     
     def setup_tests(self) -> None:
         pass
 
     def execute(self) -> str:
-        if not self.df.empty:
+        if self.__is_valid__():
             return f"; {self.header}\n" + "".join([test.convert_to_test(self.df) for test in self.tests])
-        raise ValueError("Dataframe is empty.")
+        raise ValueError(self.__error_str__)
+
+    def __is_valid__(self):
+        if not self.df.empty:
+            return True
+        else:
+            self.__error_str__ = "Dataframe is empty"
     
+
 class WireListTest(BaseListTest):
 
     def __init__(self, df: pd.DataFrame, cfg: Config):
@@ -89,11 +100,14 @@ class GroundListTest(BaseListTest):
         
     def __format_df__(self):
         grds = self.df[GROUND]
-        if len(grds.index) <= 1:
-            raise ValueError("There must be at least 2 ground connectors for continuity test.")
         first_element = grds[0]
         pairs = [[first_element, item] for item in grds[1:]]
         self.df = pd.DataFrame(pairs, columns=[FROM, TO])
         self.df[PIN_LEFT] = ""
         self.df[PIN_RIGHT] = ""
-        
+    
+    def __is_valid__(self):
+        if super().__is_valid__() and len(self.df.index) > 1:
+            return True
+        else:
+            self.__error_str__ = "There must be at least 2 ground connectors for continuity test."
