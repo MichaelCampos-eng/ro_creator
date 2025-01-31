@@ -4,20 +4,42 @@ from ..converter.list_test import *
 
 class DitmcoRo:
 
-    def __init__(self, cfg: Config, ditmco_list:pd.DataFrame = None):
-        self.cfg = cfg
-        self.test = BaseListTest(ditmco_list, cfg)
-        self.error_str = None
+    """
+    A class used to represent an Ro tests for specific list or multiple
+
+    ...
+
+    Attributes
+    ----------
+    cfg : COnfig
+        metadata describing parameters and types of test to create 
+    test : BaseListTest
+        contains all the tests needed to execute
+    error_str
+
+    Methods
+    -------
+    export_test()
+        produces test scripts str and saves it locally using __cfg__
+    
+    __export_file__(txt: str)
+        helper function that export_test uses to save test locally
+    """
+
+    def __init__(self, cfg: Config, ditmco_list: pd.DataFrame = None):
+        self.__cfg__ = cfg
+        self.__test__ = BaseListTest(ditmco_list, cfg)
+        self.__error_str__ = None
     
     def export_test(self):
         try:
-            ro_str = self.test.execute()
+            ro_str = self.__test__.execute()
             self.__export_file__(ro_str)
         except ValueError as e:
             raise ValueError(e)
     
     def __export_file__(self, txt):
-        with open(self.cfg.results_path, 'w') as file:
+        with open(self.__cfg__.results_path, 'w') as file:
             file.write(txt)
 
 class AggregateRo(DitmcoRo):
@@ -36,25 +58,25 @@ class AggregateRo(DitmcoRo):
         if ro_str != "":
             self.__export_file__(ro_str)
         else:
-            raise ValueError(self.error_str)
+            raise ValueError(self.__error_str__)
         
 class WireListRo(DitmcoRo):
 
     def __init__(self, cfg: Config, wire_list: pd.DataFrame):
-        self.cfg = cfg
-        self.test = WireListTest(wire_list, cfg)
-        self.error_str = "Wire list is empty."
+        self.__cfg__ = cfg
+        self.__test__ = WireListTest(wire_list, cfg)
+        self.__error_str__ = "Wire list is empty."
 
 class UnusedListRo(DitmcoRo):
 
     def __init__(self, cfg: Config, isolated_list: pd.DataFrame):
-        self.cfg = cfg
-        self.test = UnusedListTest(isolated_list, cfg)
-        self.error_str = "Wire list is empty."
+        self.__cfg__ = cfg
+        self.__test__ = UnusedListTest(isolated_list, cfg)
+        self.__error_str__ = "Wire list is empty."
 
 class GroundListRo(DitmcoRo):
 
     def __init__(self, cfg: Config, ground_list: pd.DataFrame):
-        self.cfg = cfg
-        self.test = GroundListTest(ground_list, cfg)
-        self.error_str = "Ground list is empty."
+        self.__cfg__ = cfg
+        self.__test__ = GroundListTest(ground_list, cfg)
+        self.__error_str__ = "Ground list is empty."
