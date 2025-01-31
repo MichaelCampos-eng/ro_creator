@@ -91,7 +91,7 @@ class GroundListTest(BaseListTest):
     def execute(self):
         if len(self.df.index) > 1:
             self.__format_df__()
-            super().execute()
+            return super().execute()
         else:
             raise ValueError("There must be at least 2 ground connectors for continuity test.")      
 
