@@ -68,7 +68,6 @@ class ContinuityTest(BaseRoTest):
         return "C-" + str(row[TO]) + pin
     
     def __to_input_group__(self, group: pd.DataFrame) -> pd.Series:
-        print("TO INPUT GROUP: {}".format(type(group)))
         if len(group) > 1:
             sorted_cont_pts = pd.Series(ns.natsorted(group.apply(self.__to_multiple_continuity__, axis=1)))
             sorted_cont_pts.iloc[-1] = sorted_cont_pts.iloc[-1].replace("CV-", "C-")
@@ -76,8 +75,8 @@ class ContinuityTest(BaseRoTest):
         return group.apply(self.__to_input__, axis=1).reset_index(drop=True)
             
     def __to_multiple_continuity__(self, row: pd.Series) -> str:
-        pin = "-" + str(row["PIN RIGHT"]) + "\n" if row["PIN RIGHT"] != "" else "\n"
-        return "CV-" + str(row["TO"]) + pin
+        pin = "-" + str(row[PIN_RIGHT]) + "\n" if row[PIN_RIGHT] != "" else "\n"
+        return "CV-" + str(row[TO]) + pin
 
     def __convert__(self, df: pd.DataFrame) -> pd.DataFrame:
         cont_df = df.copy()
@@ -109,7 +108,7 @@ class IsolationTest(BaseRoTest):
         self.name = "isolation"
 
     def __to_input__(self, row: pd.Series) -> str:
-        return "T-" + str(row[CL.CONNECTOR]) + "-" + str(row[CL.PIN]) + "\n"
+        return "T-" + str(row[CONNECTOR]) + "-" + str(row[PIN]) + "\n"
 
     def __convert__(self, df: pd.DataFrame) -> pd.DataFrame:
         sorted_con_pin = ns.natsorted(df.apply(self.__to_input__, axis=1))
@@ -122,11 +121,11 @@ class LeakageTest(BaseRoTest):
         self.name = "leakage"
 
     def __to_input__(self, row: pd.Series) -> str:
-        return "F-" + str(row[CL.CONNECTOR]) + "-" + str(row[CL.PIN]) + "\n"
+        return "F-" + str(row[CONNECTOR]) + "-" + str(row[PIN]) + "\n"
     
     def __convert__(self, df: pd.DataFrame) -> pd.DataFrame:
         left = df[[FROM, PIN_LEFT]].rename(columns={FROM: CONNECTOR, PIN_LEFT: PIN})
         right = df[[TO, PIN_RIGHT]].rename(columns={TO: CONNECTOR, PIN_LEFT: PIN})
-        connectors = pd.concat([left, right], ignore_index=True).drop_duplicates(subset=[CONNECTOR, CL.PIN])
+        connectors = pd.concat([left, right], ignore_index=True).drop_duplicates(subset=[CONNECTOR, PIN])
         sorted_con_pin = ns.natsorted(connectors.apply(self.__to_input__, axis=1))
         return pd.DataFrame({self.name: sorted_con_pin})
