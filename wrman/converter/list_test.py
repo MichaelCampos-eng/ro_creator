@@ -47,7 +47,7 @@ class BaseListTest():
 
     def execute(self) -> str:
         if not self.df.empty:
-            return f"; {self.header}\n" + "".join([test.convert_to_test(self.df) for test in self.tests])
+            return f"; {self.header}\n" + "".join([test.convert_to_test(self.df) for test in self.tests]) + "\n"
         raise ValueError("Dataframe is empty.")
     
 
@@ -62,9 +62,9 @@ class WireListTest(BaseListTest):
         if self.cfg.continuity_cfg.execute:
             self.tests.append(ContinuityTest(self.cfg.continuity_cfg))
         if self.cfg.leakage_cfg.execute:
-            self.tests.append(LeakageTest(self.cfg.continuity_cfg))
+            self.tests.append(LeakageTest(self.cfg.leakage_cfg))
         if self.cfg.hipot_cfg.execute:
-            self.tests.append(HipotTest(self.cfg.continuity_cfg)) 
+            self.tests.append(HipotTest(self.cfg.hipot_cfg)) 
 
 class UnusedListTest(BaseListTest):
 
