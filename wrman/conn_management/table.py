@@ -75,7 +75,7 @@ class ConnectionTable:
     def add_entry(self, values: List[str]):
         new_entry = pd.DataFrame({self.df.columns[i]: [values[i].replace(" ", "")] for i in range(len(self.df.columns))})
         self.df = pd.concat([self.df, new_entry])
-        indices = self.df.apply(lambda row: tuple(sorted(row)), axis=1).drop_duplicates().reset_index(drop=True).index.to_list()
+        indices = self.df.apply(lambda row: tuple(sorted(row.astype(str))), axis=1).drop_duplicates().reset_index(drop=True).index.to_list()
         self.df = self.df.iloc[indices].reset_index().drop(columns=["index"])
         self.__result_str__ = f"{self.table_name}\n{self.df}"
     
