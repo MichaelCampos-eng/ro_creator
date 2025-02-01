@@ -125,7 +125,7 @@ class LeakageTest(BaseRoTest):
     
     def __convert__(self, df: pd.DataFrame) -> pd.DataFrame:
         left = df[[FROM, PIN_LEFT]].rename(columns={FROM: CONNECTOR, PIN_LEFT: PIN})
-        right = df[[TO, PIN_RIGHT]].rename(columns={TO: CONNECTOR, PIN_LEFT: PIN})
+        right = df[[TO, PIN_RIGHT]].rename(columns={TO: CONNECTOR, PIN_RIGHT: PIN})
         connectors = pd.concat([left, right], ignore_index=True).drop_duplicates(subset=[CONNECTOR, PIN])
         sorted_con_pin = ns.natsorted(connectors.apply(self.__to_input__, axis=1))
         return pd.DataFrame({self.name: sorted_con_pin})
