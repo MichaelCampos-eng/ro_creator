@@ -47,7 +47,7 @@ class BaseListTest():
 
     def execute(self) -> str:
         if not self.df.empty:
-            return f"; {self.header}\n" + "".join([test.convert_to_test(self.df) for test in self.tests]) + "\n"
+            return f"; {self.header}\n" + "".join([test.convert_to_test(self.df) + "\n" for test in self.tests])
         raise ValueError("Dataframe is empty.")
     
 
