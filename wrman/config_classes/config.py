@@ -12,7 +12,7 @@ class TestConfig:
     def update_block_name(self, block_name):
         self.block_name = block_name
 
-    def update_params(self, params)
+    def update_params(self, params):
         self.params = params
 
 @dataclass
