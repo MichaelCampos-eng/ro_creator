@@ -11,7 +11,7 @@ class DitmcoRo:
 
     Attributes
     ----------
-    cfg : COnfig
+    cfg : Config
         metadata describing parameters and types of test to create 
     test : BaseListTest
         contains all the tests needed to execute

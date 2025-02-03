@@ -1,11 +1,19 @@
 from dataclasses import dataclass
-from typing import Optional, Union
 
 @dataclass
 class TestConfig:
     execute: True
     block_name: str
     params: str
+
+    def update_execute(self, execute):
+        self.execute = execute
+    
+    def update_block_name(self, block_name):
+        self.block_name = block_name
+
+    def update_params(self, params)
+        self.params = params
 
 @dataclass
 class Config:
