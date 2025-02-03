@@ -45,6 +45,9 @@ class ConnectionTable:
         self.__result_str__ = None
 
     def open(self, csv_path: str):
+        opened: pd.DataFrame = pd.read_csv(csv_path)
+        if opened.columns.to_list() != self.df.columns.to_list():
+            raise ValueError("Invalid spreadsheet. Check table type.")
         self.df = pd.read_csv(csv_path)
 
     def save_in(self, folder_path: str):
