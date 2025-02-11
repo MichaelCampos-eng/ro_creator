@@ -17,7 +17,6 @@ class TestConfig:
 
 @dataclass
 class Config:
-    results_path: str
     continuity_cfg: TestConfig
     leakage_cfg: TestConfig
     isolation_cfg: TestConfig
