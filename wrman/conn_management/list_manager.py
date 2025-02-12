@@ -4,6 +4,7 @@ import os
 import sys
 import pandas as pd
 from typing import List
+import zipfile
 
 PIN_LEFT = WL.PIN_LEFT.value
 PIN_RIGHT = WL.PIN_RIGHT.value
@@ -115,9 +116,13 @@ class DitmcoList():
         if len(self.__args__) == len(self.__hint_txts__):
             self.__parse_save__()
             self.__args__ = []
-            return 
+            return
+        
+    def load_parquet(self, file: zipfile.ZipExtFile):
+        self.__table__.open_parquet(file)
+        self.__args__ = []
     
-    def load_list(self, file_path: str):
+    def load_list(self, file: str):
         self.__table__.open(file_path)
         self.__args__ = []
 

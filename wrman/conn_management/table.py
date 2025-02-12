@@ -1,6 +1,8 @@
+from typing import List
 import pandas as pd
 import random as rd
-from typing import List
+import zipfile
+import io
 
 class ConnectionTable:
 
@@ -44,11 +46,17 @@ class ConnectionTable:
         self.df = pd.DataFrame(columns=column_names)
         self.__result_str__ = None
 
+    def open_parquet(self, file: zipfile.ZipExtFile):
+        opened: pd.DataFrame = pd.read_parquet(io.BytesIO(file.read()))
+        if opened.columns.to_list() != self.df.columns.to_list():
+            raise ValueError("Invalid spreadsheet. Check table type.")
+        self.df = opened
+
     def open(self, csv_path: str):
         opened: pd.DataFrame = pd.read_csv(csv_path)
         if opened.columns.to_list() != self.df.columns.to_list():
             raise ValueError("Invalid spreadsheet. Check table type.")
-        self.df = pd.read_csv(csv_path)
+        self.df = opened
 
     def save_in(self, folder_path: str):
         table_name = self.table_name.replace(" ", "_").lower()
