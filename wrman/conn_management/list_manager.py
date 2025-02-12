@@ -118,11 +118,16 @@ class DitmcoList():
             self.__args__ = []
             return
         
+    def clear(self):
+        index = self.__table__.df.index
+        self.__table__.df.drop(index, inplace=True)
+        self.__args__ = []
+        
     def load_parquet(self, file: zipfile.ZipExtFile):
         self.__table__.open_parquet(file)
         self.__args__ = []
     
-    def load_list(self, file: str):
+    def load_list(self, file_path: str):
         self.__table__.open(file_path)
         self.__args__ = []
 
