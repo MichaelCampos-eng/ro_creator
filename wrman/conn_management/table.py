@@ -4,7 +4,7 @@ import random as rd
 import zipfile
 import io
 
-class ConnectionTable:
+class DataEntryManager:
 
     """
     A class used to represent connectors' mappings
@@ -42,31 +42,40 @@ class ConnectionTable:
     """
     
     def __init__(self, column_names: List[str], table_name: str):
-        self.table_name = table_name
-        self.df = pd.DataFrame(columns=column_names)
+        self.__table_name__ = table_name
+        self.__df__ = pd.DataFrame(columns=column_names)
         self.__result_str__ = None
 
     def open_parquet(self, file: zipfile.ZipExtFile):
         opened: pd.DataFrame = pd.read_parquet(io.BytesIO(file.read()))
-        if opened.columns.to_list() != self.df.columns.to_list():
+        if opened.columns.to_list() != self.__df__.columns.to_list():
             raise ValueError("Invalid spreadsheet. Check table type.")
-        self.df = opened
+        self.__df__ = opened
 
     def open(self, csv_path: str):
         opened: pd.DataFrame = pd.read_csv(csv_path)
-        if opened.columns.to_list() != self.df.columns.to_list():
+        if opened.columns.to_list() != self.__df__.columns.to_list():
             raise ValueError("Invalid spreadsheet. Check table type.")
-        self.df = opened
+        self.__df__ = opened
 
     def save_in(self, folder_path: str):
-        table_name = self.table_name.replace(" ", "_").lower()
+        __table_name__ = self.__table_name__.replace(" ", "_").lower()
         serial_num = ''.join([str(rd.randint(0, 9)) for _ in range(5)])
-        file_full_name = f"{folder_path}/{table_name}_{serial_num}.csv"
-        self.df.to_csv(file_full_name, index=False)
+        file_full_name = f"{folder_path}/{__table_name__}_{serial_num}.csv"
+        self.__df__.to_csv(file_full_name, index=False)
         self.__result_str__ = f"Saved dataframe as {file_full_name}!\n"
 
     def save_as(self, file_path: str):
-        self.df.to_csv(file_path, index=False)
+        self.__df__.to_csv(file_path, index=False)
+
+    def is_df_empty(self) -> bool:
+        return self.__df__.empty
+    
+    def get_df(self) -> pd.DataFrame:
+        return self.__df__
+    
+    def get_table_name(self) -> str:
+        return self.__table_name__
 
     def display(self):
         if self.__result_str__:
@@ -77,16 +86,16 @@ class ConnectionTable:
     def remove_entry(self, command: str):
         try: 
             index = int(command.split(" ")[1])
-            self.df.drop(index, inplace=True)
-            self.df.reset_index(drop=True, inplace=True)
-            self.__result_str__ = f"{self.table_name}\n{self.df} \n" + f"Entry at index {index} removed\n"
+            self.__df__.drop(index, inplace=True)
+            self.__df__.reset_index(drop=True, inplace=True)
+            self.__result_str__ = f"{self.__table_name__}\n{self.__df__} \n" + f"Entry at index {index} removed\n"
         except Exception as e:
             raise ValueError(f"Invalid index: {command.split(' ')[1]}") from e
 
     def add_entry(self, values: List[str]):
-        new_entry = pd.DataFrame({self.df.columns[i]: [values[i].replace(" ", "")] for i in range(len(self.df.columns))})
-        self.df = pd.concat([self.df, new_entry])
-        indices = self.df.apply(lambda row: tuple(sorted(row.astype(str))), axis=1).drop_duplicates().reset_index(drop=True).index.to_list()
-        self.df = self.df.iloc[indices].reset_index().drop(columns=["index"])
-        self.__result_str__ = f"{self.table_name}\n{self.df}"
+        new_entry = pd.DataFrame({self.__df__.columns[i]: [values[i].replace(" ", "")] for i in range(len(self.__df__.columns))})
+        self.__df__ = pd.concat([self.__df__, new_entry])
+        indices = self.__df__.apply(lambda row: tuple(sorted(row.astype(str))), axis=1).drop_duplicates().reset_index(drop=True).index.to_list()
+        self.__df__ = self.__df__.iloc[indices].reset_index().drop(columns=["index"])
+        self.__result_str__ = f"{self.__table_name__}\n{self.__df__}"
     

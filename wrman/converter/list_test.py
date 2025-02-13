@@ -2,6 +2,7 @@ from ..converter.ro_tests import *
 import pandas as pd
 from typing import List
 from ..utils.labels import *
+from ..conn_management.table import DataEntryManager
 
 PIN_LEFT = WL.PIN_LEFT.value
 PIN_RIGHT = WL.PIN_RIGHT.value
@@ -29,35 +30,38 @@ class BaseListTest():
 
     Methods
     -------
-    setup_tests()
+    __setup_tests__()
         creates instances of RO tests and appends it to tests according to cfg
     
     execute()
         if df is not empty, return str of all ro tests based on tests attribute
     """
 
-    def __init__(self, df: pd.DataFrame, cfg: Config):
-        self.df = df
+    def __init__(self, list: DataEntryManager, cfg: Config):
+        self.manager = list
         self.cfg = cfg
         self.tests: List[BaseRoTest] = []
         self.header = ""
     
-    def setup_tests(self) -> None:
+    def __setup_tests__(self) -> None:
         pass
+    
+    def __get_df_formatted__(self) -> pd.DataFrame:
+        return self.manager.get_df()
 
     def execute(self) -> str:
-        if not self.df.empty:
-            return f"; {self.header}\n" + "".join([test.convert_to_test(self.df) + "\n" for test in self.tests])
+        if not self.manager.is_df_empty():
+            return f"; {self.header}\n" + "".join([test.convert_to_test(self.__get_df_formatted__()) + "\n" for test in self.tests])
         raise ValueError("Dataframe is empty.")
     
 
 class WireListTest(BaseListTest):
 
-    def __init__(self, df: pd.DataFrame, cfg: Config):
-        super().__init__(df, cfg)
-        self.setup_tests()
+    def __init__(self, list: DataEntryManager, cfg: Config):
+        super().__init__(list, cfg)
+        self.__setup_tests__()
     
-    def setup_tests(self) -> None:
+    def __setup_tests__(self) -> None:
         self.header = "Wire List Tests"
         if self.cfg.continuity_cfg.execute:
             self.tests.append(ContinuityTest(self.cfg.continuity_cfg))
@@ -68,38 +72,39 @@ class WireListTest(BaseListTest):
 
 class UnusedListTest(BaseListTest):
 
-    def __init__(self, df: pd.DataFrame, cfg: Config):
-        super().__init__(df, cfg)
-        self.setup_tests()
+    def __init__(self, list: DataEntryManager, cfg: Config):
+        super().__init__(list, cfg)
+        self.__setup_tests__()
     
-    def setup_tests(self) -> None:
+    def __setup_tests__(self) -> None:
         self.header = "Unused Pins Tests"
         if self.cfg.isolation_cfg.execute:
             self.tests.append(IsolationTest(self.cfg.isolation_cfg))
 
 class GroundListTest(BaseListTest):
 
-    def __init__(self, df: pd.DataFrame, cfg: Config):
-        super().__init__(df, cfg)
-        self.setup_tests()
+    def __init__(self, list: DataEntryManager, cfg: Config):
+        super().__init__(list, cfg)
+        self.__setup_tests__()
     
-    def setup_tests(self) -> None:
+    def __setup_tests__(self) -> None:
         self.header = "Ground Tests"
         if self.cfg.continuity_cfg.execute:
             self.tests.append(ContinuityTest(self.cfg.continuity_cfg))
     
     def execute(self):
-        if len(self.df.index) > 1:
-            self.__format_df__()
+        if len(self.manager.get_df().index) > 1:
             return super().execute()
         else:
             raise ValueError("There must be at least 2 ground connectors for continuity test.")      
 
-    def __format_df__(self):
-        grds = self.df[GROUND]
+    def __get_df_formatted__(self):
+        df = self.manager.get_df()
+        grds = df[GROUND]
         first_element = grds[0]
         pairs = [[first_element, item] for item in grds[1:]]
-        self.df = pd.DataFrame(pairs, columns=[FROM, TO])
-        self.df[PIN_LEFT] = ""
-        self.df[PIN_RIGHT] = ""
+        df = pd.DataFrame(pairs, columns=[FROM, TO])
+        df[PIN_LEFT] = ""
+        df[PIN_RIGHT] = ""
+        return df
             

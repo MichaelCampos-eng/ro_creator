@@ -1,6 +1,7 @@
 import pandas as pd
 from ..config_classes.config import Config
 from ..converter.list_test import *
+from ..conn_management.table import DataEntryManager
 
 class DitmcoRo:
 
@@ -43,32 +44,32 @@ class DitmcoRo:
     def get_test(self):
         return self.__test__
 
-    def set_test(cfg: Config, df: pd.DataFrame):
+    def set_test(cfg: Config, list: DataEntryManager):
         pass
         
 class WireListRo(DitmcoRo):
 
-    def __init__(self, cfg: Config, wire_list: pd.DataFrame):
-        self.__test__ = WireListTest(wire_list, cfg)
+    def __init__(self, cfg: Config, list: DataEntryManager):
+        self.__test__ = WireListTest(list, cfg)
     
-    def set_test(self, cfg: Config, df: pd.DataFrame):
-        self.__test__ = WireListTest(df, cfg)
+    def set_test(self, cfg: Config, list: DataEntryManager):
+        self.__test__ = WireListTest(list, cfg)
 
 class UnusedListRo(DitmcoRo):
 
-    def __init__(self, cfg: Config, isolated_list: pd.DataFrame):
-        self.__test__ = UnusedListTest(isolated_list, cfg)
+    def __init__(self, cfg: Config, list: DataEntryManager):
+        self.__test__ = UnusedListTest(list, cfg)
     
-    def set_test(self, cfg: Config, df: pd.DataFrame):
-        self.__test__ = UnusedListTest(df, cfg)
+    def set_test(self, cfg: Config, list: DataEntryManager):
+        self.__test__ = UnusedListTest(list, cfg)
 
 class GroundListRo(DitmcoRo):
 
-    def __init__(self, cfg: Config, ground_list: pd.DataFrame):
-        self.__test__ = GroundListTest(ground_list, cfg)
+    def __init__(self, cfg: Config, list: DataEntryManager):
+        self.__test__ = GroundListTest(list, cfg)
     
-    def set_test(self, cfg: Config, df: pd.DataFrame):
-        self.__test__ = GroundListTest(df, cfg)
+    def set_test(self, cfg: Config, list: DataEntryManager):
+        self.__test__ = GroundListTest(list, cfg)
 
 class AggregateRo(DitmcoRo):
     

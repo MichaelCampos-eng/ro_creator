@@ -1,4 +1,4 @@
-from ..conn_management.table import ConnectionTable
+from ..conn_management.table import DataEntryManager
 from ..utils.labels import *
 import os
 import sys
@@ -31,10 +31,10 @@ class DitmcoList():
     __hint_txts__ : List[str]
         list of placeholder texts displayed to inform what arg to input
     
-    __table_col_names__ : List[str]
+    __col_names__ : List[str]
         list of column names for table
     
-    __table__ : ConnectionTable
+    manager : ConnectionTable
         ConnectionTable to store entries for list
 
     Methods
@@ -47,28 +47,28 @@ class DitmcoList():
 
     step(arg: str):
         updates __args__ after verifying validity and parsing given input arg, 
-        saving entry if num of __args__ is of num of col of __table__
+        saving entry if num of __args__ is of num of col of manager
     
     load_list(file_path):
-        loads csv file from file_path into __table__ and clears __args__
+        loads csv file from file_path into manager and clears __args__
     
     save_list(file_path):
-        save csv file from __table__ into file_path and clears __args__
+        save csv file from manager into file_path and clears __args__
     
     get_list_name():
-        returns name of __table__
+        returns name of manager
     
     get_df():
-        returns raw pd.DataFrame from __table__
+        returns raw pd.DataFrame from manager
     
     get_column_names()
-        returns column names of __table__
+        returns column names of manager
     
     fetch_hint_text()
         returns current arg needed to be inputted
     
     __parse_save__()
-        parses __args__ and saves it in __table__ as row entry
+        parses __args__ and saves it in manager as row entry
     
     __valid__()
         returns true if inputted arg is valid else false
@@ -84,8 +84,8 @@ class DitmcoList():
     def __init__(self):
         self.__args__ = []
         self.__hint_txts__ = []
-        self.__table_col_names__ = []
-        self.__table__: ConnectionTable = None
+        self.__col_names__ = []
+        self.manager: DataEntryManager = None
         self.__clear__ = lambda: os.system('cls')
 
     def begin_cli(self, folder_path: str):
@@ -95,18 +95,18 @@ class DitmcoList():
             try: 
                 if self.__is_quit__(arg):
                     self.__clear__()
-                    self.__table__.save_in(folder_path=folder_path)
+                    self.manager.save_in(folder_path=folder_path)
                     sys.exit()
                 self.step(arg)
                 self.__clear__()
-                self.__table__.display()
+                self.manager.display()
             except ValueError as e:
                 print(str(e))
 
     def step(self, arg: str):
         if self.__is_remove__(arg):
             try: 
-                self.__table__.remove_entry(arg)
+                self.manager.remove_entry(arg)
                 return
             except Exception as e:
                 raise e
@@ -119,36 +119,30 @@ class DitmcoList():
             return
         
     def clear(self):
-        index = self.__table__.df.index
-        self.__table__.df.drop(index, inplace=True)
+        index = self.manager.__df__.index
+        self.manager.__df__.drop(index, inplace=True)
         self.__args__ = []
         
     def load_parquet(self, file: zipfile.ZipExtFile):
-        self.__table__.open_parquet(file)
+        self.manager.open_parquet(file)
         self.__args__ = []
     
     def load_list(self, file_path: str):
-        self.__table__.open(file_path)
+        self.manager.open(file_path)
         self.__args__ = []
 
     def save_list(self, file_path: str):
-        self.__table__.save_as(file_path)
+        self.manager.save_as(file_path)
         self.__args__ = []
-        
-    def get_list_name(self) -> str:
-        return self.__table__.table_name
-    
-    def get_df(self) -> pd.DataFrame:
-        return self.__table__.df
     
     def get_column_names(self) -> List[str]:
-        return self.__table_col_names__
+        return self.__col_names__
 
     def fetch_hint_txt(self) -> str:
         return self.__hint_txts__[len(self.__args__)]
 
     def __parse_save__(self):
-        self.__table__.add_entry(self.__args__)
+        self.manager.add_entry(self.__args__)
 
     def __valid__(self, arg) -> bool:
         args = arg.split(" ")
@@ -171,14 +165,14 @@ class WireList(DitmcoList):
     def __init__(self):
         super().__init__()
         self.__hint_txts__ = ["'FROM' (space) 'PIN LEFT'", "'TO'  (space) 'PIN RIGHT'"]
-        self.__table_col_names__ = [FROM, PIN_LEFT, TO, PIN_RIGHT]
-        self.__table__ = ConnectionTable(self.__table_col_names__, "Wire List") 
+        self.__col_names__ = [FROM, PIN_LEFT, TO, PIN_RIGHT]
+        self.manager = DataEntryManager(self.__col_names__, "Wire List") 
         
     def __parse_save__(self):
         parsed_values = []
         for arg in self.__args__:
             parsed_values += arg.split(" ")
-        self.__table__.add_entry(parsed_values)
+        self.manager.add_entry(parsed_values)
         
 
 class IsolatedList(DitmcoList):
@@ -186,19 +180,19 @@ class IsolatedList(DitmcoList):
     def __init__(self):
         super().__init__()
         self.__hint_txts__ = ["'REF DES' (space) 'PIN'"]
-        self.__table_col_names__ = [CONNECTOR, PIN]
-        self.__table__ = ConnectionTable(self.__table_col_names__, "Unused Pin List")
+        self.__col_names__ = [CONNECTOR, PIN]
+        self.manager = DataEntryManager(self.__col_names__, "Unused Pin List")
     
     def __parse_save__(self):
-        self.__table__.add_entry(self.__args__[0].split(" "))
+        self.manager.add_entry(self.__args__[0].split(" "))
 
 class GroundList(DitmcoList):
 
     def __init__(self):
         super().__init__()
         self.__hint_txts__ = ["'Connector'", "'Ground'"] 
-        self.__table_col_names__ = [CONNECTOR, GROUND]
-        self.__table__ = ConnectionTable(self.__table_col_names__, "Ground List")
+        self.__col_names__ = [CONNECTOR, GROUND]
+        self.manager = DataEntryManager(self.__col_names__, "Ground List")
     
     def __valid__(self, arg) -> bool:
         if self.__is_remove__(arg):
