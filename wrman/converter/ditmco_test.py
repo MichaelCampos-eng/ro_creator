@@ -42,21 +42,33 @@ class DitmcoRo:
     
     def get_test(self):
         return self.__test__
+
+    def set_test(cfg: Config, df: pd.DataFrame):
+        pass
         
 class WireListRo(DitmcoRo):
 
     def __init__(self, cfg: Config, wire_list: pd.DataFrame):
         self.__test__ = WireListTest(wire_list, cfg)
+    
+    def set_test(self, cfg: Config, df: pd.DataFrame):
+        self.__test__ = WireListTest(df, cfg)
 
 class UnusedListRo(DitmcoRo):
 
     def __init__(self, cfg: Config, isolated_list: pd.DataFrame):
         self.__test__ = UnusedListTest(isolated_list, cfg)
+    
+    def set_test(self, cfg: Config, df: pd.DataFrame):
+        self.__test__ = UnusedListTest(df, cfg)
 
 class GroundListRo(DitmcoRo):
 
     def __init__(self, cfg: Config, ground_list: pd.DataFrame):
         self.__test__ = GroundListTest(ground_list, cfg)
+    
+    def set_test(self, cfg: Config, df: pd.DataFrame):
+        self.__test__ = GroundListTest(df, cfg)
 
 class AggregateRo(DitmcoRo):
     
@@ -64,16 +76,25 @@ class AggregateRo(DitmcoRo):
                     isolated_test: UnusedListTest,
                     grd_test: GroundListTest 
                  ):
-        self.error = "Empty lists."
-        self.wire_test = wire_test
-        self.isolated_test = isolated_test
-        self.grd_test = grd_test
+        self.__error__ = "Empty lists."
+        self.__wire_test__ = wire_test
+        self.__isolated_test__ = isolated_test
+        self.__grd_test__ = grd_test
 
     def export(self, file_path):
-        ro_str = self.wire_test.execute() if self.wire_test else ""
-        ro_str += self.isolated_test.execute() if self.isolated_test else ""
-        ro_str += self.grd_test.execute() if self.grd_test else ""
+        ro_str = self.__wire_test__.execute() if self.__wire_test__ else ""
+        ro_str += self.__isolated_test__.execute() if self.__isolated_test__ else ""
+        ro_str += self.__grd_test__.execute() if self.__grd_test__ else ""
         if ro_str != "":
             self.__export_file__(ro_str, file_path)
         else:
             raise ValueError(self.__error_str__)
+        
+    def set_wire_test(self, test: WireListTest):
+        self.__wire_test__ = test
+    
+    def set_iso_test(self, test: UnusedListTest):
+        self.__isolated_test__ = test
+    
+    def set_grd_test(self, test: GroundListTest):
+        self.__grd_test__ = test
